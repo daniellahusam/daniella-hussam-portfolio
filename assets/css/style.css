@@ -516,3 +516,60 @@ body { padding-top: 78px; }
   .footer-bottom { font-size: 8px; }
   .card-grid { columns: 2; }
 }
+
+
+/* Homepage hero: use Daniella's supplied composition as one complete artwork */
+.hero-artworld {
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  max-height: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #f5e9e9;
+  border-bottom: 1px solid var(--line);
+}
+.home-hero-image {
+  display: block;
+  width: 100%;
+  max-width: 1366px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  object-position: center;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Clear, medium-sized footer social icons */
+.footer-socials {
+  min-height: 82px;
+  gap: 34px;
+}
+.footer-socials a {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  color: var(--pink);
+}
+.footer-socials a svg {
+  display: block;
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.footer-socials a .icon-dot { fill: currentColor; stroke: none; }
+.footer-socials a:hover { color: var(--purple); }
+
+@media (max-width: 600px) {
+  .home-hero-image { width: 100%; }
+  .footer-socials { min-height: 74px; gap: 28px; }
+  .footer-socials a, .footer-socials a svg { width: 32px; height: 32px; }
+}
