@@ -608,3 +608,69 @@ body { padding-top: 78px; }
 .paper-plane-doodle {
   display: none !important;
 }
+
+
+/* Final sizing adjustments: larger header, slightly inset Mostra section */
+.site-header {
+  min-height: 104px;
+  padding: 13px 3.5vw;
+}
+body { padding-top: 104px; }
+.brand { gap: 14px; }
+.brand .mushroom-mark {
+  width: 49px;
+  height: 49px;
+  flex-basis: 49px;
+}
+.brand .brand-signature {
+  width: 185px;
+  max-height: 48px;
+}
+.brand-lockup small { font-size: 9px; }
+.nav { gap: clamp(14px, 1.9vw, 30px); }
+.nav a { font-size: 11px; }
+.nav .mostra-nav-link img {
+  width: 58px;
+  height: 28px;
+}
+.mostra-section {
+  padding-left: clamp(18px, 2.5vw, 40px);
+  padding-right: clamp(18px, 2.5vw, 40px);
+}
+.paper-plane-doodle { display: none !important; }
+
+@media (max-width: 900px) {
+  .site-header {
+    min-height: 104px;
+    padding: 11px 3.5vw;
+  }
+  body { padding-top: 104px; }
+  .brand .mushroom-mark {
+    width: 45px;
+    height: 45px;
+    flex-basis: 45px;
+  }
+  .brand .brand-signature { width: 170px; }
+  .nav a { font-size: 10px; }
+  .nav .mostra-nav-link img { width: 52px; }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    min-height: 132px;
+    padding: 10px 4vw;
+  }
+  body { padding-top: 132px; }
+  .brand .mushroom-mark {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+  .brand .brand-signature { width: 155px; }
+  .nav a { font-size: 8px; }
+  .nav .mostra-nav-link img { width: 43px; }
+  .mostra-section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
