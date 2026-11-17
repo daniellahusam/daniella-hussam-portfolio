@@ -4,7 +4,6 @@ category: Selected Works
 year: "2024"
 medium: Acrylic on canvas
 description: |
-  Details
   Size: 80 x 100 x 4 cm
   Rarity: Unique work
 
