@@ -1,1 +1,533 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ceramics & Clay | Daniella Husam</title><meta name="description" content="Official portfolio of Daniella Husam, visual artist."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="assets/css/style.css" rel="stylesheet"></head><body><header class="site-header"><a class="brand" href="index.html"><img src="assets/images/mushroom-logo.png" alt="Daniella Husam mushroom logo"><span class="brand-name">Daniella Husam<small>VISUAL ARTIST</small></span></a><nav class="nav" aria-label="Main navigation"><a href="index.html" class="">Home</a><a href="selected-works.html" class="">Selected Works</a><a href="studies.html" class="">Studies</a><a href="ceramics.html" class="active">Ceramics</a><a href="installations.html" class="">Installations</a><a href="about.html" class="">About</a><a href="contact.html" class="">Contact</a></nav></header><main><section class="page-intro"><div class="eyebrow">03 / Material Practice</div><h1>Ceramics & Clay</h1><p>Explorations in clay, surface, texture and three-dimensional form. Finished ceramic works, material experiments and tests.</p></section><section class="card-grid"><article class="work-card"><div class="visual"><div class="visual-empty">Add artwork photograph here</div></div><h3>Sculptural Forms</h3><div class="meta">Hand-built · Sculpture</div></article><article class="work-card"><div class="visual"><div class="visual-empty">Add artwork photograph here</div></div><h3>Vessels & Objects</h3><div class="meta">Ceramic object · Form</div></article><article class="work-card"><div class="visual"><div class="visual-empty">Add artwork photograph here</div></div><h3>Surface Experiments</h3><div class="meta">Glaze · Texture · Material</div></article></section></main><footer class="site-footer"><span>© 2026 Daniella Husam</span><span>Artist · Working internationally</span><a href="contact.html">Enquiries & collaborations</a></footer></body></html>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ceramics & Clay | Daniella Husam</title>
+  <meta name="description" content="Ceramic artworks and clay experiments by Daniella Husam.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    .artwork-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      cursor: zoom-in;
+    }
+
+    .artwork-description {
+      white-space: pre-line;
+      margin-top: 16px;
+      line-height: 1.75;
+      color: #625968;
+      font-size: 0.95rem;
+    }
+
+    .artwork-purchase {
+      display: inline-block;
+      margin-top: 14px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .loading-message {
+      padding: 30px 0;
+    }
+
+    /* Full-screen artwork viewer */
+    .zoom-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(20, 15, 24, 0.97);
+      padding: 70px 24px 30px;
+    }
+
+    .zoom-viewer.open {
+      display: flex;
+    }
+
+    .zoom-stage {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      touch-action: none;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .zoom-stage.dragging {
+      cursor: grabbing;
+    }
+
+    .zoom-stage img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transform-origin: center center;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .zoom-toolbar {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      z-index: 2;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 40px;
+      padding: 8px 12px;
+    }
+
+    .zoom-toolbar button,
+    .zoom-close {
+      border: 0;
+      color: white;
+      background: rgba(255,255,255,0.15);
+      cursor: pointer;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      font-size: 21px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .zoom-toolbar button:hover,
+    .zoom-close:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .zoom-level {
+      color: white;
+      font-size: 13px;
+      min-width: 48px;
+      text-align: center;
+    }
+
+    .zoom-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 25px;
+      z-index: 3;
+    }
+
+    .zoom-hint {
+      position: absolute;
+      bottom: 18px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      letter-spacing: 1px;
+      pointer-events: none;
+    }
+
+    body.viewer-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 600px) {
+      .zoom-viewer {
+        padding: 75px 10px 45px;
+      }
+
+      .zoom-close {
+        right: 12px;
+      }
+
+      .zoom-toolbar {
+        top: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <img src="assets/images/mushroom-logo.png" alt="Daniella Husam mushroom logo">
+    <span class="brand-name">Daniella Husam<small>VISUAL ARTIST</small></span>
+  </a>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="selected-works.html">Selected Works</a>
+    <a href="studies.html">Studies</a>
+    <a href="ceramics.html" class="active">Ceramics</a>
+    <a href="installations.html">Installations</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="page-intro">
+    <div class="eyebrow">03 / Material Practice</div>
+    <h1>Ceramics & Clay</h1>
+    <p>Explorations in clay, surface, texture and three-dimensional form. Finished ceramic works, material experiments and tests.</p>
+  </section>
+
+  <section class="card-grid" id="artwork-grid">
+    <p class="loading-message">Loading ceramic artworks...</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Daniella Husam</span>
+  <span>Artist · Working internationally</span>
+  <a href="contact.html">Enquiries & collaborations</a>
+</footer>
+
+<!-- Artwork zoom viewer -->
+<div class="zoom-viewer" id="zoom-viewer" role="dialog"
+     aria-modal="true" aria-label="Artwork image viewer">
+
+  <button class="zoom-close" id="zoom-close"
+          aria-label="Close viewer">&times;</button>
+
+  <div class="zoom-toolbar">
+    <button id="zoom-out" aria-label="Zoom out">−</button>
+    <span class="zoom-level" id="zoom-level">100%</span>
+    <button id="zoom-in" aria-label="Zoom in">+</button>
+    <button id="zoom-reset" aria-label="Reset zoom"
+            title="Reset view">↺</button>
+  </div>
+
+  <div class="zoom-stage" id="zoom-stage">
+    <img id="zoom-image" src="" alt="">
+  </div>
+
+  <div class="zoom-hint">
+    DRAG TO MOVE · SCROLL OR USE + / − TO ZOOM
+  </div>
+</div>
+
+<script>
+const owner = "daniellahusam";
+const repo = "daniella-hussam-portfolio";
+const branch = "main";
+
+const grid = document.getElementById("artwork-grid");
+
+function getField(frontmatter, field) {
+  const match = frontmatter.match(
+    new RegExp("^" + field + ":\\s*(.*)$", "m")
+  );
+
+  if (!match) return "";
+
+  return match[1].trim().replace(/^["']|["']$/g, "");
+}
+
+function getDescription(frontmatter) {
+  const match = frontmatter.match(
+    /^description:\s*>?-?\s*\n([\s\S]*?)(?=\n(?:image|title|category|year|medium):|\s*$)/m
+  );
+
+  if (!match) return "";
+
+  return match[1]
+    .split("\n")
+    .map(line => line.replace(/^\s{2,}/, "").trim())
+    .join("\n")
+    .trim();
+}
+
+function getPurchaseLink(text) {
+  const match = text.match(
+    /https:\/\/getmostra\.com\/artwork\/[^\s"'<>]+/
+  );
+
+  return match ? match[0] : "";
+}
+
+/* Zoom viewer controls */
+const viewer = document.getElementById("zoom-viewer");
+const stage = document.getElementById("zoom-stage");
+const zoomImage = document.getElementById("zoom-image");
+const zoomLevel = document.getElementById("zoom-level");
+
+let scale = 1;
+let positionX = 0;
+let positionY = 0;
+let dragging = false;
+let startX = 0;
+let startY = 0;
+let startPositionX = 0;
+let startPositionY = 0;
+let activePointer = null;
+
+function updateZoom() {
+  zoomImage.style.transform =
+    `translate(${positionX}px, ${positionY}px) scale(${scale})`;
+
+  zoomLevel.textContent = Math.round(scale * 100) + "%";
+}
+
+function changeZoom(amount) {
+  scale = Math.min(5, Math.max(1, scale + amount));
+
+  if (scale === 1) {
+    positionX = 0;
+    positionY = 0;
+  }
+
+  updateZoom();
+}
+
+function resetZoom() {
+  scale = 1;
+  positionX = 0;
+  positionY = 0;
+  updateZoom();
+}
+
+function openViewer(src, alt) {
+  zoomImage.src = src;
+  zoomImage.alt = alt;
+  resetZoom();
+
+  viewer.classList.add("open");
+  document.body.classList.add("viewer-open");
+}
+
+function closeViewer() {
+  viewer.classList.remove("open");
+  document.body.classList.remove("viewer-open");
+  zoomImage.src = "";
+}
+
+/* Buttons */
+document.getElementById("zoom-in").addEventListener("click", () => {
+  changeZoom(0.25);
+});
+
+document.getElementById("zoom-out").addEventListener("click", () => {
+  changeZoom(-0.25);
+});
+
+document.getElementById("zoom-reset").addEventListener("click", resetZoom);
+document.getElementById("zoom-close").addEventListener("click", closeViewer);
+
+/* Click outside the image to close */
+viewer.addEventListener("click", event => {
+  if (event.target === viewer) closeViewer();
+});
+
+/* Keyboard controls */
+document.addEventListener("keydown", event => {
+  if (!viewer.classList.contains("open")) return;
+
+  if (event.key === "Escape") closeViewer();
+  if (event.key === "+" || event.key === "=") changeZoom(0.25);
+  if (event.key === "-") changeZoom(-0.25);
+  if (event.key === "0") resetZoom();
+
+  const movement = 35;
+
+  if (event.key === "ArrowUp") positionY += movement;
+  if (event.key === "ArrowDown") positionY -= movement;
+  if (event.key === "ArrowLeft") positionX += movement;
+  if (event.key === "ArrowRight") positionX -= movement;
+
+  updateZoom();
+});
+
+/* Mouse wheel zoom */
+stage.addEventListener("wheel", event => {
+  event.preventDefault();
+
+  if (event.deltaY < 0) {
+    changeZoom(0.15);
+  } else {
+    changeZoom(-0.15);
+  }
+}, { passive: false });
+
+/* Click and drag to move the zoomed artwork */
+stage.addEventListener("pointerdown", event => {
+  if (scale <= 1) return;
+
+  dragging = true;
+  activePointer = event.pointerId;
+  startX = event.clientX;
+  startY = event.clientY;
+  startPositionX = positionX;
+  startPositionY = positionY;
+
+  stage.classList.add("dragging");
+  stage.setPointerCapture(event.pointerId);
+});
+
+stage.addEventListener("pointermove", event => {
+  if (!dragging || event.pointerId !== activePointer) return;
+
+  positionX = startPositionX + event.clientX - startX;
+  positionY = startPositionY + event.clientY - startY;
+
+  updateZoom();
+});
+
+function stopDragging(event) {
+  if (event.pointerId !== activePointer) return;
+
+  dragging = false;
+  activePointer = null;
+  stage.classList.remove("dragging");
+}
+
+stage.addEventListener("pointerup", stopDragging);
+stage.addEventListener("pointercancel", stopDragging);
+
+/* Create artwork cards */
+function makeCard(markdown) {
+  const frontmatterMatch = markdown.match(
+    /^---\s*\n([\s\S]*?)\n---/
+  );
+
+  if (!frontmatterMatch) return null;
+
+  const frontmatter = frontmatterMatch[1];
+
+  const title = getField(frontmatter, "title");
+  const category = getField(frontmatter, "category");
+  const year = getField(frontmatter, "year");
+  const medium = getField(frontmatter, "medium");
+  const image = getField(frontmatter, "image");
+  const description = getDescription(frontmatter);
+  const purchaseLink = getPurchaseLink(frontmatter);
+
+  if (category !== "Ceramics") return null;
+
+  const article = document.createElement("article");
+  article.className = "work-card";
+
+  if (image) {
+    const visual = document.createElement("div");
+    visual.className = "visual";
+
+    const img = document.createElement("img");
+    img.className = "artwork-image";
+
+    img.src = image.startsWith("http")
+      ? image
+      : "/" + repo + "/" + image.replace(/^\/+/, "");
+
+    img.alt = title || "Ceramic artwork by Daniella Husam";
+    img.loading = "lazy";
+
+    img.addEventListener("click", () => {
+      openViewer(img.src, img.alt);
+    });
+
+    visual.appendChild(img);
+    article.appendChild(visual);
+  }
+
+  const heading = document.createElement("h3");
+  heading.textContent = title;
+  article.appendChild(heading);
+
+  const meta = document.createElement("div");
+  meta.className = "meta";
+  meta.textContent = [year, medium].filter(Boolean).join(" · ");
+  article.appendChild(meta);
+
+  if (description) {
+    const details = document.createElement("p");
+    details.className = "artwork-description";
+    details.textContent = description;
+    article.appendChild(details);
+  }
+
+  if (purchaseLink) {
+    const link = document.createElement("a");
+    link.className = "artwork-purchase";
+    link.href = purchaseLink;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "View / Purchase on Mostra";
+    article.appendChild(link);
+  }
+
+  return article;
+}
+
+/* Load ceramic artworks from GitHub */
+async function loadArtworks() {
+  try {
+    const apiUrl =
+      `https://api.github.com/repos/${owner}/${repo}/contents/artworks?ref=${branch}`;
+
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error("Could not access the artwork collection.");
+    }
+
+    const files = await response.json();
+
+    const markdownFiles = files.filter(file =>
+      file.type === "file" && file.name.endsWith(".md")
+    );
+
+    const artworks = await Promise.all(
+      markdownFiles.map(async file => {
+        const fileResponse = await fetch(file.download_url);
+
+        if (!fileResponse.ok) return "";
+
+        return await fileResponse.text();
+      })
+    );
+
+    grid.innerHTML = "";
+
+    artworks.forEach(markdown => {
+      const card = makeCard(markdown);
+
+      if (card) grid.appendChild(card);
+    });
+
+    if (!grid.children.length) {
+      grid.textContent =
+        "No ceramic artworks have been added yet. Add an artwork in Pages CMS and choose the Ceramics category.";
+    }
+
+  } catch (error) {
+    console.error(error);
+
+    grid.textContent =
+      "We couldn't load the ceramic artworks just now. Please refresh the page.";
+  }
+}
+
+loadArtworks();
+</script>
+
+</body>
+</html>
