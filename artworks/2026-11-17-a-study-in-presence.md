@@ -1,5 +1,5 @@
 ---
-title: A study in presence
+title: A Study In Presence
 category: Selected Works
 year: "2021"
 medium: Mixed Media on Canvas
