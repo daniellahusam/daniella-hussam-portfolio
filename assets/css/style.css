@@ -674,3 +674,23 @@ body { padding-top: 104px; }
     padding-right: 14px;
   }
 }
+
+
+/* Final navigation label sizing */
+.site-header .nav a:not(.mostra-nav-link) {
+  font-size: 13px;
+  letter-spacing: .13em;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .site-header .nav a:not(.mostra-nav-link) {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header .nav a:not(.mostra-nav-link) {
+    font-size: 10px;
+  }
+}
