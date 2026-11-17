@@ -28,3 +28,8 @@ In your GitHub repository, choose Add file > Upload files. Upload the revised HT
 
 BEFORE GOING PUBLIC WITH CONTACT
 Replace YOUR-EMAIL@example.com with your professional email address.
+
+
+UPDATED BRAND ASSETS
+- assets/images/mushroom-logo.png: your supplied transparent mushroom-eye logo, cropped and optimised.
+- assets/images/daniella-husam-signature.png: your supplied transparent Daniella Husam signature, cropped and optimised. Used as the homepage name graphic.
