@@ -1,3 +1,4 @@
+
 media:
   input: assets/images
   output: /assets/images
@@ -33,4 +34,35 @@ content:
         type: text
       - name: image
         label: Artwork image
+        type: image
+
+  - name: homepage
+    label: Home Page
+    type: file
+    path: content/home.json
+    format: json
+    fields:
+      - name: introduction
+        label: Homepage introduction
+        type: text
+      - name: featured_image
+        label: Featured artwork photograph
+        type: image
+      - name: featured_alt
+        label: Featured artwork description
+        type: string
+      - name: portfolio_heading
+        label: Portfolio heading
+        type: string
+      - name: portfolio_description
+        label: Portfolio description
+        type: text
+      - name: selected_works_image
+        label: Selected Works photograph
+        type: image
+      - name: studies_image
+        label: Studies photograph
+        type: image
+      - name: ceramics_image
+        label: Ceramics photograph
         type: image
