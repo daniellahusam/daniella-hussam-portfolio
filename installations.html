@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="assets/css/style.css" rel="stylesheet">
+
 <style>
 .artwork-image {
   display: block;
@@ -17,24 +18,149 @@
   min-height: 300px;
   object-fit: contain;
   background: #e7dfd4;
+  cursor: zoom-in;
 }
+
 .work-card .visual {
   overflow: hidden;
   background: #e7dfd4;
 }
+
 .artwork-details {
   padding: 12px 0 24px;
 }
+
 .artwork-details h3 {
   margin-bottom: 8px;
 }
+
 .artwork-details p {
   margin: 12px 0;
   line-height: 1.7;
 }
+
 .empty-message {
   padding: 50px 0;
   color: #766b7c;
+}
+
+/* Fullscreen artwork viewer */
+.artwork-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 65px 24px 25px;
+  background: rgba(20, 17, 22, 0.97);
+}
+
+.artwork-viewer.active {
+  display: flex;
+}
+
+.viewer-image-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+}
+
+.viewer-image-wrap.dragging {
+  cursor: grabbing;
+}
+
+.viewer-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transform-origin: center center;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.viewer-controls {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  z-index: 2;
+}
+
+.viewer-controls button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 50%;
+  color: white;
+  background: rgba(255,255,255,0.08);
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.viewer-controls button:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.viewer-close {
+  margin-left: 12px;
+  font-size: 25px !important;
+}
+
+.viewer-caption {
+  flex-shrink: 0;
+  max-width: 850px;
+  padding: 14px 10px 0;
+  color: #f3eee8;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.viewer-caption strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+.viewer-hint {
+  color: #bcb4bd;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+  .artwork-viewer {
+    padding: 70px 12px 18px;
+  }
+
+  .viewer-controls {
+    top: 12px;
+    right: 12px;
+  }
+
+  .viewer-controls button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .viewer-caption {
+    font-size: 12px;
+  }
 }
 </style>
 </head>
@@ -45,6 +171,7 @@
 <img src="assets/images/mushroom-logo.png" alt="Daniella Husam mushroom logo">
 <span class="brand-name">Daniella Husam<small>VISUAL ARTIST</small></span>
 </a>
+
 <nav class="nav" aria-label="Main navigation">
 <a href="index.html">Home</a>
 <a href="selected-works.html">Selected Works</a>
@@ -74,11 +201,42 @@
 <a href="contact.html">Enquiries & collaborations</a>
 </footer>
 
+<!-- Fullscreen viewer -->
+<div class="artwork-viewer" id="artwork-viewer" role="dialog" aria-modal="true" aria-label="Artwork image viewer">
+
+  <div class="viewer-controls">
+    <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+    <button type="button" id="zoom-reset" aria-label="Reset zoom">↺</button>
+    <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+    <button type="button" id="viewer-close" class="viewer-close" aria-label="Close viewer">×</button>
+  </div>
+
+  <div class="viewer-image-wrap" id="viewer-image-wrap">
+    <img class="viewer-image" id="viewer-image" src="" alt="">
+  </div>
+
+  <div class="viewer-caption" id="viewer-caption"></div>
+</div>
+
 <script>
 const owner = "daniellahusam";
 const repo = "daniella-hussam-portfolio";
 const websiteBase = "https://daniellahusam.github.io/daniella-hussam-portfolio";
 const grid = document.getElementById("artwork-grid");
+
+const viewer = document.getElementById("artwork-viewer");
+const viewerImage = document.getElementById("viewer-image");
+const viewerWrap = document.getElementById("viewer-image-wrap");
+const viewerCaption = document.getElementById("viewer-caption");
+
+let zoom = 1;
+let panX = 0;
+let panY = 0;
+let dragging = false;
+let startX = 0;
+let startY = 0;
+let lastX = 0;
+let lastY = 0;
 
 function getField(markdown, field) {
   const match = markdown.match(new RegExp("^" + field + ":\\s*(.*)$", "m"));
@@ -88,6 +246,7 @@ function getField(markdown, field) {
 function getDescription(markdown) {
   const match = markdown.match(/^description:\s*(?:[>|-]+\s*)?\n([\s\S]*?)(?=\n(?:image|title|category|year|medium):|\n---)/m);
   if (!match) return "";
+
   return match[1]
     .split("\n")
     .map(line => line.replace(/^\s+/, ""))
@@ -95,6 +254,143 @@ function getDescription(markdown) {
     .replace(/\s+/g, " ")
     .trim();
 }
+
+function updateTransform() {
+  viewerImage.style.transform =
+    `translate(${panX}px, ${panY}px) scale(${zoom})`;
+}
+
+function resetViewer() {
+  zoom = 1;
+  panX = 0;
+  panY = 0;
+  updateTransform();
+}
+
+function openViewer(item) {
+  viewerImage.src = websiteBase + item.image;
+  viewerImage.alt = item.title;
+
+  viewerCaption.innerHTML = "";
+
+  const title = document.createElement("strong");
+  title.textContent = item.title;
+  viewerCaption.appendChild(title);
+
+  const description = document.createElement("div");
+  description.textContent = [
+    item.year,
+    item.medium,
+    item.description
+  ].filter(Boolean).join(" · ");
+
+  viewerCaption.appendChild(description);
+
+  const hint = document.createElement("div");
+  hint.className = "viewer-hint";
+  hint.textContent = "Scroll or use + / − to zoom · Drag to explore · Esc to close";
+  viewerCaption.appendChild(hint);
+
+  resetViewer();
+  viewer.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeViewer() {
+  viewer.classList.remove("active");
+  document.body.style.overflow = "";
+  viewerImage.src = "";
+  resetViewer();
+}
+
+document.getElementById("viewer-close").addEventListener("click", closeViewer);
+
+document.getElementById("zoom-in").addEventListener("click", () => {
+  zoom = Math.min(zoom + 0.25, 5);
+  updateTransform();
+});
+
+document.getElementById("zoom-out").addEventListener("click", () => {
+  zoom = Math.max(zoom - 0.25, 1);
+  if (zoom === 1) {
+    panX = 0;
+    panY = 0;
+  }
+  updateTransform();
+});
+
+document.getElementById("zoom-reset").addEventListener("click", resetViewer);
+
+viewer.addEventListener("click", event => {
+  if (event.target === viewer) closeViewer();
+});
+
+viewerWrap.addEventListener("pointerdown", event => {
+  if (!viewer.classList.contains("active")) return;
+
+  dragging = true;
+  startX = event.clientX - panX;
+  startY = event.clientY - panY;
+  lastX = event.clientX;
+  lastY = event.clientY;
+
+  viewerWrap.classList.add("dragging");
+  viewerWrap.setPointerCapture(event.pointerId);
+});
+
+viewerWrap.addEventListener("pointermove", event => {
+  if (!dragging || zoom <= 1) return;
+
+  panX = event.clientX - startX;
+  panY = event.clientY - startY;
+
+  lastX = event.clientX;
+  lastY = event.clientY;
+
+  updateTransform();
+});
+
+function stopDragging() {
+  dragging = false;
+  viewerWrap.classList.remove("dragging");
+}
+
+viewerWrap.addEventListener("pointerup", stopDragging);
+viewerWrap.addEventListener("pointercancel", stopDragging);
+
+viewerWrap.addEventListener("wheel", event => {
+  event.preventDefault();
+
+  zoom = event.deltaY < 0
+    ? Math.min(zoom + 0.2, 5)
+    : Math.max(zoom - 0.2, 1);
+
+  if (zoom === 1) {
+    panX = 0;
+    panY = 0;
+  }
+
+  updateTransform();
+}, { passive: false });
+
+document.addEventListener("keydown", event => {
+  if (!viewer.classList.contains("active")) return;
+
+  if (event.key === "Escape") closeViewer();
+  if (event.key === "+" || event.key === "=") {
+    zoom = Math.min(zoom + 0.25, 5);
+    updateTransform();
+  }
+  if (event.key === "-") {
+    zoom = Math.max(zoom - 0.25, 1);
+    if (zoom === 1) {
+      panX = 0;
+      panY = 0;
+    }
+    updateTransform();
+  }
+  if (event.key === "0") resetViewer();
+});
 
 function makeCard(item) {
   const card = document.createElement("article");
@@ -108,6 +404,8 @@ function makeCard(item) {
     img.className = "artwork-image";
     img.src = websiteBase + item.image;
     img.alt = item.title;
+    img.loading = "lazy";
+    img.addEventListener("click", () => openViewer(item));
     visual.appendChild(img);
   }
 
@@ -131,6 +429,7 @@ function makeCard(item) {
 
   card.appendChild(visual);
   card.appendChild(details);
+
   return card;
 }
 
