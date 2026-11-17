@@ -1,0 +1,36 @@
+media:
+  input: assets/images
+  output: /assets/images
+  rename: safe
+  categories: [image]
+
+content:
+  - name: artworks
+    label: Artwork
+    type: collection
+    path: artworks
+    fields:
+      - name: title
+        label: Artwork title
+        type: string
+      - name: category
+        label: Category
+        type: select
+        options:
+          values:
+            - Selected Works
+            - Studies
+            - Ceramics
+            - Installations
+      - name: year
+        label: Year
+        type: string
+      - name: medium
+        label: Medium
+        type: string
+      - name: description
+        label: Description
+        type: text
+      - name: image
+        label: Artwork image
+        type: image
