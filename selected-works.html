@@ -1,1 +1,215 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Selected Works | Daniella Husam</title><meta name="description" content="Official portfolio of Daniella Husam, visual artist."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="assets/css/style.css" rel="stylesheet"></head><body><header class="site-header"><a class="brand" href="index.html"><img src="assets/images/mushroom-logo.png" alt="Daniella Husam mushroom logo"><span class="brand-name">Daniella Husam<small>VISUAL ARTIST</small></span></a><nav class="nav" aria-label="Main navigation"><a href="index.html" class="">Home</a><a href="selected-works.html" class="active">Selected Works</a><a href="studies.html" class="">Studies</a><a href="ceramics.html" class="">Ceramics</a><a href="installations.html" class="">Installations</a><a href="about.html" class="">About</a><a href="contact.html" class="">Contact</a></nav></header><main><section class="page-intro"><div class="eyebrow">01 / Portfolio</div><h1>Selected Works</h1><p>A selection of completed artworks bringing together colour, symbolism and surreal imagery. Add each work with its title, medium, dimensions and year.</p></section><section class="card-grid"><article class="work-card"><div class="visual"><div class="visual-empty">Add artwork photograph here</div></div><h3>The Fool</h3><div class="meta">Add year · medium · dimensions</div></article><article class="work-card"><div class="visual"><div class="visual-empty">Add artwork photograph here</div></div><h3>Barbie’s Wanderlust</h3><div class="meta">Add year · medium · dimensions</div></article><article class="work-card"><div class="visual"><div class="visual-empty">Add artwork photograph here</div></div><h3>Reverie in Red Poppies</h3><div class="meta">Add year · medium · dimensions</div></article></section></main><footer class="site-footer"><span>© 2026 Daniella Husam</span><span>Artist · Working internationally</span><a href="contact.html">Enquiries & collaborations</a></footer></body></html>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Selected Works | Daniella Husam</title>
+  <meta name="description" content="Selected artworks by Daniella Husam, visual artist.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    .artwork-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .artwork-purchase {
+      display: inline-block;
+      margin-top: 12px;
+      text-decoration: underline;
+    }
+    .artwork-description {
+      white-space: pre-line;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+    .loading-message {
+      padding: 30px 0;
+    }
+  </style>
+</head>
+
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <img src="assets/images/mushroom-logo.png" alt="Daniella Husam mushroom logo">
+    <span class="brand-name">Daniella Husam<small>VISUAL ARTIST</small></span>
+  </a>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="selected-works.html" class="active">Selected Works</a>
+    <a href="studies.html">Studies</a>
+    <a href="ceramics.html">Ceramics</a>
+    <a href="installations.html">Installations</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="page-intro">
+    <div class="eyebrow">01 / Portfolio</div>
+    <h1>Selected Works</h1>
+    <p>A selection of completed artworks bringing together colour, symbolism and surreal imagery.</p>
+  </section>
+
+  <section class="card-grid" id="artwork-grid">
+    <p class="loading-message">Loading artworks...</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Daniella Husam</span>
+  <span>Artist · Working internationally</span>
+  <a href="contact.html">Enquiries & collaborations</a>
+</footer>
+
+<script>
+const owner = "daniellahusam";
+const repo = "daniella-hussam-portfolio";
+const branch = "main";
+
+const grid = document.getElementById("artwork-grid");
+
+function getField(frontmatter, field) {
+  const match = frontmatter.match(
+    new RegExp("^" + field + ":\\s*(.*)$", "m")
+  );
+  if (!match) return "";
+  return match[1].trim().replace(/^["']|["']$/g, "");
+}
+
+function getDescription(frontmatter) {
+  const match = frontmatter.match(
+    /^description:\s*>?-?\s*\n([\s\S]*?)(?=\n(?:image|title|category|year|medium):|\s*$)/m
+  );
+
+  if (!match) return "";
+
+  return match[1]
+    .split("\n")
+    .map(line => line.replace(/^\s{2,}/, "").trim())
+    .join("\n")
+    .trim();
+}
+
+function getPurchaseLink(text) {
+  const match = text.match(/https:\/\/getmostra\.com\/artwork\/[^\s"'<>]+/);
+  return match ? match[0] : "";
+}
+
+function makeCard(markdown) {
+  const frontmatterMatch = markdown.match(/^---\s*\n([\s\S]*?)\n---/);
+
+  if (!frontmatterMatch) return null;
+
+  const frontmatter = frontmatterMatch[1];
+
+  const title = getField(frontmatter, "title");
+  const category = getField(frontmatter, "category");
+  const year = getField(frontmatter, "year");
+  const medium = getField(frontmatter, "medium");
+  const image = getField(frontmatter, "image");
+  const description = getDescription(frontmatter);
+  const purchaseLink = getPurchaseLink(frontmatter);
+
+  if (category !== "Selected Works") return null;
+
+  const article = document.createElement("article");
+  article.className = "work-card";
+
+  if (image) {
+    const visual = document.createElement("div");
+    visual.className = "visual";
+
+    const img = document.createElement("img");
+    img.className = "artwork-image";
+    img.src = image.startsWith("http")
+      ? image
+      : "/" + repo + "/" + image.replace(/^\/+/, "");
+    img.alt = title || "Artwork by Daniella Husam";
+    img.loading = "lazy";
+
+    visual.appendChild(img);
+    article.appendChild(visual);
+  }
+
+  const heading = document.createElement("h3");
+  heading.textContent = title;
+  article.appendChild(heading);
+
+  const meta = document.createElement("div");
+  meta.className = "meta";
+  meta.textContent = [year, medium].filter(Boolean).join(" · ");
+  article.appendChild(meta);
+
+  if (description) {
+    const details = document.createElement("p");
+    details.className = "artwork-description";
+    details.textContent = description;
+    article.appendChild(details);
+  }
+
+  if (purchaseLink) {
+    const link = document.createElement("a");
+    link.className = "artwork-purchase";
+    link.href = purchaseLink;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "View / Purchase on Mostra";
+    article.appendChild(link);
+  }
+
+  return article;
+}
+
+async function loadArtworks() {
+  try {
+    const apiUrl =
+      `https://api.github.com/repos/${owner}/${repo}/contents/artworks?ref=${branch}`;
+
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error("Could not access the artwork collection.");
+    }
+
+    const files = await response.json();
+
+    const markdownFiles = files.filter(file =>
+      file.type === "file" && file.name.endsWith(".md")
+    );
+
+    const artworks = await Promise.all(
+      markdownFiles.map(async file => {
+        const fileResponse = await fetch(file.download_url);
+        if (!fileResponse.ok) return "";
+        return await fileResponse.text();
+      })
+    );
+
+    grid.innerHTML = "";
+
+    artworks.forEach(markdown => {
+      const card = makeCard(markdown);
+      if (card) grid.appendChild(card);
+    });
+
+    if (!grid.children.length) {
+      grid.textContent = "No artworks have been added to this collection yet.";
+    }
+  } catch (error) {
+    console.error(error);
+    grid.textContent =
+      "We couldn't load the artworks just now. Please refresh the page.";
+  }
+}
+
+loadArtworks();
+</script>
+</body>
+</html>
