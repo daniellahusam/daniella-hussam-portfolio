@@ -803,3 +803,20 @@ body { padding-top: 104px; }
   .projects-gallery { grid-template-columns: 1fr; }
   .projects-gallery .work-card:nth-child(3) { grid-column: auto; }
 }
+
+
+
+/* Comfort Zone: preserve artwork on the left, statement on the right */
+.comfort-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(28px, 4vw, 64px);
+  margin: 0 0 72px;
+}
+.comfort-project > .work-card { width: 100%; margin: 0; }
+.comfort-project .project-statement { padding-top: 0; }
+.comfort-project .project-statement .project-meta { margin-bottom: 24px; }
+@media (max-width: 700px) {
+  .comfort-project { grid-template-columns: 1fr; gap: 24px; margin-bottom: 44px; }
+}
