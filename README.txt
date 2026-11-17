@@ -1,71 +1,30 @@
-DANIELLA HUSSAM — ARTIST PORTFOLIO
-==================================
+DANIELLA HUSSAM — PORTFOLIO WEBSITE
+===================================
 
-This is a responsive, multi-page static website starter.
+DESIGN UPDATE
+- Warm light beige background
+- Deep black-plum typography
+- Bold, editorial sans-serif typography inspired by the reference screenshot
+- Your mushroom logo in the top-left navigation
+- No city or country displayed, so the portfolio stays location-independent
+- Seven responsive pages
 
-PAGES
------
-index.html                 Home
-selected-works.html        Finished / selected artworks
-studies.html               Studies & Explorations
-ceramics.html              Ceramics & Clay
-installations.html         Installation & Spatial Work
-about.html                 Biography and exhibition history
-contact.html               Contact and external links
+HOW TO ADD OR REPLACE ARTWORK PHOTOS
+1. Put your photo in assets/images/.
+2. Give it a simple filename, e.g. the-fool.jpg.
+3. Open the page you want to edit (e.g. selected-works.html).
+4. Find the card you want to update and replace the placeholder visual with:
+   <div class="visual"><img src="assets/images/the-fool.jpg" alt="The Fool"></div>
+5. Change the title and details in the text below that image.
+6. Upload the changed file and image to your GitHub repository, keeping the same folder structure, then commit the changes.
 
-BEFORE PUBLISHING
------------------
-1. Replace the coloured artwork placeholders with photographs of your own work.
-2. Replace the portrait placeholder on about.html with a professional portrait.
-3. Add your professional email address on contact.html (replace YOUR-EMAIL@example.com).
-4. Check the About page exhibition details, titles and dates. They are starter copy and should be verified.
-5. Update artwork titles, media, dimensions and years. The three example titles are based on works previously discussed.
-6. Add image alt text when you insert your photographs.
+IMPORTANT: GitHub Pages is a static website. It does not yet have a private photo-upload dashboard. For now, edits are made by replacing/uploading files in GitHub. We can add a visual CMS/editor as a separate next step.
 
-HOW TO ADD YOUR ARTWORK
------------------------
-Create image files in assets/images/, for example:
-  fool.jpg
-  barbies-wanderlust.jpg
-  reverie-red-poppies.jpg
-  artist-portrait.jpg
+HOW TO EDIT TEXT
+Open the relevant .html file, find the text between tags such as <p>...</p> or <h1>...</h1>, and replace only the words. Keep the surrounding tags.
 
-In the HTML, replace a placeholder <div class="visual"> with:
-  <img src="assets/images/fool.jpg" alt="The Fool, mixed media artwork by Daniella Hussam">
+PUBLISH UPDATES
+In your GitHub repository, choose Add file > Upload files. Upload the revised HTML file(s) and any new images in their correct folders. Commit changes. GitHub Pages will update the live website automatically after a short delay.
 
-For the large homepage image, replace:
-  <div class="art-placeholder">...</div>
-with an <img> element using a class such as:
-  <img class="hero-image" src="assets/images/featured-work.jpg" alt="...">
-Then add .hero-image { width:100%; height:100%; object-fit:cover; } to the stylesheet.
-
-LOCAL PREVIEW
--------------
-Open index.html in a web browser. For best results, preview using a simple local server or upload the folder to a hosting service.
-
-FREE PUBLISHING OPTION: NETLIFY DROP
-------------------------------------
-1. Visit https://app.netlify.com/drop
-2. Sign in or create a free account.
-3. Drag the entire folder (or a ZIP extracted to a folder) onto the drop area.
-4. Netlify will publish it and provide a free *.netlify.app address.
-5. You can change the site name in the Netlify site settings.
-6. Keep the folder as your master copy. When you update it, deploy the updated folder again.
-
-ALTERNATIVE: GITHUB PAGES
--------------------------
-1. Create a GitHub account at https://github.com/
-2. Create a new public repository, e.g. daniella-hussam-portfolio.
-3. Upload all files and folders from this package to the repository root.
-4. Open Settings > Pages.
-5. Under Build and deployment, choose Deploy from a branch.
-6. Select main and /(root), then Save.
-7. GitHub will provide a free address similar to:
-   https://YOUR-USERNAME.github.io/daniella-hussam-portfolio/
-
-NOTES
------
-- No paid domain is required.
-- Google Fonts load from the internet; if unavailable, the site falls back to system fonts.
-- Contact form functionality is not included; the email link opens the visitor's email app.
-- The site is a starter template, not yet populated with your actual artwork photographs.
+BEFORE GOING PUBLIC WITH CONTACT
+Replace YOUR-EMAIL@example.com with your professional email address.
