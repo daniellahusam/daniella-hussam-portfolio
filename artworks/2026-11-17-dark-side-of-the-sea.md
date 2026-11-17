@@ -17,5 +17,5 @@ description: >-
 
   *Had been exhibited at Dar art fair, Sweifieh village, Amman, Jordan, July 1st
   2021
-image: /assets/images/766f474b-848a-45ac-a69a-bfb0cf4b7343.jpg
+image: /assets/images/img2120.jpg
 ---
