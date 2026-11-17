@@ -1,130 +1,132 @@
 
 <!doctype html>
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Home | Daniella Husam</title>
-<meta name="description" content="Official portfolio of Daniella Husam, multidisciplinary visual artist. Explore original artworks and selected digital prints.">
+<meta name="description" content="Daniella Husam is a multidisciplinary visual artist exploring colour, identity, emotion and the surreal through painting, mixed media and material experimentation.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="assets/css/style.css" rel="stylesheet">
 
 <style>
-/* Mostra navigation link */
-.nav-mostra {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  margin-left: 8px;
-  white-space: nowrap;
-}
 
-.nav-mostra img {
-  display: block;
-  width: 76px;
-  height: auto;
-  max-height: 32px;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-}
+/* MOSTRA SECTION */
 
-/* Homepage collection section */
 .mostra-section {
-  margin: 70px 0;
-  padding: 55px 35px;
-  background: #e9e2d9;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap: 50px;
   align-items: center;
-  justify-content: space-between;
-  gap: 35px;
-}
-
-.mostra-copy {
-  max-width: 650px;
-}
-
-.mostra-copy .eyebrow {
-  margin-bottom: 14px;
+  padding: 90px 0;
+  margin: 20px 0 70px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .mostra-copy h2 {
-  margin: 0 0 16px;
+  font-size: clamp(42px, 6vw, 82px);
+  line-height: .98;
+  letter-spacing: -.07em;
+  margin: 25px 0;
+  max-width: 850px;
 }
 
 .mostra-copy p {
-  max-width: 580px;
+  font-size: 17px;
   line-height: 1.8;
-  margin-bottom: 24px;
+  max-width: 650px;
+  margin: 0 0 28px;
+  color: #625a65;
 }
 
 .mostra-button {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 13px 21px;
-  background: #29232c;
-  color: #fff !important;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
+  justify-content: center;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 17px 24px;
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: .2s;
 }
 
 .mostra-button:hover {
-  opacity: 0.82;
-}
-
-.mostra-button img {
-  width: 75px;
-  height: auto;
-  max-height: 25px;
-  object-fit: contain;
-  background: white;
-  padding: 2px 5px;
+  background: var(--accent);
+  color: white;
 }
 
 .mostra-note {
-  font-size: 12px;
-  opacity: 0.75;
-  margin-top: 15px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .mostra-mark {
-  flex-shrink: 0;
-  width: 190px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
 }
 
 .mostra-mark img {
-  display: block;
   width: 100%;
+  max-width: 300px;
   height: auto;
-  mix-blend-mode: multiply;
+  object-fit: contain;
 }
 
-@media (max-width: 850px) {
+.mostra-nav-link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 7px;
+}
+
+.mostra-nav-link img {
+  width: 48px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* MOBILE */
+
+@media(max-width: 760px) {
   .mostra-section {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 38px 24px;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 60px 0;
+  }
+
+  .mostra-copy h2 {
+    font-size: clamp(40px, 11vw, 65px);
+  }
+
+  .mostra-copy p {
+    font-size: 15px;
   }
 
   .mostra-mark {
-    width: 145px;
-    align-self: flex-end;
+    justify-content: flex-start;
+    padding: 10px 0;
+  }
+
+  .mostra-mark img {
+    max-width: 190px;
+  }
+
+  .mostra-nav-link img {
+    width: 42px;
   }
 }
 
-@media (max-width: 600px) {
-  .nav-mostra img {
-    width: 58px;
-  }
-
-  .mostra-section {
-    margin: 45px 0;
-  }
-}
 </style>
 </head>
 
@@ -150,20 +152,21 @@ Daniella Husam
 <a href="contact.html">Contact</a>
 
 <a
-  href="https://getmostra.com/artist/daniellahussam"
-  class="nav-mostra"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Collect artwork on Mostra"
+class="mostra-nav-link"
+href="https://getmostra.com/artist/daniellahussam"
+target="_blank"
+rel="noopener noreferrer"
+aria-label="Visit Daniella Husam on Mostra"
 >
 <img src="assets/images/mostra-logo.png" alt="Mostra">
-<span>Collect</span>
 </a>
-
 </nav>
+
 </header>
 
 <main>
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -174,27 +177,41 @@ Contemporary visual artist · Multidisciplinary practice
 </div>
 
 <h1 class="signature-image-heading">
-<img src="assets/images/daniella-husam-signature.png" alt="Daniella Husam handwritten signature">
+<img
+src="assets/images/daniella-husam-signature.png"
+alt="Daniella Husam handwritten signature">
 </h1>
 
 <p>
-A multidisciplinary visual artist exploring colour, identity, emotion and the surreal through painting, mixed media and material experimentation.
+A multidisciplinary visual artist exploring colour, identity,
+emotion and the surreal through painting, mixed media and
+material experimentation.
 </p>
 
 <div class="actions">
-<a class="button primary" href="selected-works.html">Explore selected works</a>
-<a class="button" href="about.html">About the artist</a>
+
+<a class="button primary" href="selected-works.html">
+Explore selected works
+</a>
+
+<a class="button" href="about.html">
+About the artist
+</a>
+
 </div>
 
 </div>
 
 <div class="hero-art">
 <div class="art-instruction">
-Your featured artwork will live here. Replace this panel with a photograph of a recent piece.
+Your featured artwork will live here.
+Replace this panel with a photograph of a recent piece.
 </div>
 </div>
 
 </section>
+
+<!-- PRACTICE OVERVIEW -->
 
 <div class="intro-strip">
 <span>Painting & mixed media</span>
@@ -203,40 +220,7 @@ Your featured artwork will live here. Replace this panel with a photograph of a 
 <span>Installation & spatial work</span>
 </div>
 
-<!-- Mostra collection section -->
-<section class="mostra-section">
-
-<div class="mostra-copy">
-
-<div class="eyebrow">Collect · Discover · Own</div>
-
-<h2>Bring a piece of the art into your world.</h2>
-
-<p>
-Explore and collect selected artworks through Mostra. Original artworks are available alongside selected pieces offered as digital art prints, making the work accessible in different forms.
-</p>
-
-<a
-  class="mostra-button"
-  href="https://getmostra.com/artist/daniellahussam"
-  target="_blank"
-  rel="noopener noreferrer"
->
-<img src="assets/images/mostra-logo.png" alt="Mostra">
-<span>Collect my work</span>
-</a>
-
-<div class="mostra-note">
-Discover available artworks and print editions on Mostra.
-</div>
-
-</div>
-
-<div class="mostra-mark">
-<img src="assets/images/mostra-logo.png" alt="Mostra wordmark">
-</div>
-
-</section>
+<!-- PORTFOLIO INTRODUCTION -->
 
 <section class="section-head">
 
@@ -246,45 +230,97 @@ Discover available artworks and print editions on Mostra.
 </div>
 
 <p>
-A curated selection of finished works, visual research and experiments across materials, ideas and forms.
+A curated selection of finished works, visual research and
+experiments across materials, ideas and forms.
 </p>
 
 </section>
 
+<!-- PORTFOLIO CATEGORIES -->
+
 <section class="card-grid">
 
-<article class="work-card">
+<a class="work-card" href="selected-works.html">
 <div class="visual">
-<div class="visual-empty">Add artwork photograph here</div>
+<div class="visual-empty">Explore selected artworks</div>
 </div>
 <h3>Selected Works</h3>
 <div class="meta">Painting · Mixed media</div>
-</article>
+</a>
 
-<article class="work-card">
+<a class="work-card" href="studies.html">
 <div class="visual">
-<div class="visual-empty">Add artwork photograph here</div>
+<div class="visual-empty">Explore studies and experiments</div>
 </div>
 <h3>Studies & Explorations</h3>
 <div class="meta">Drawing · Process · Research</div>
-</article>
+</a>
 
-<article class="work-card">
+<a class="work-card" href="ceramics.html">
 <div class="visual">
-<div class="visual-empty">Add artwork photograph here</div>
+<div class="visual-empty">Explore ceramic works</div>
 </div>
 <h3>Ceramics & Clay</h3>
 <div class="meta">Object · Form · Material</div>
-</article>
+</a>
+
+</section>
+
+<!-- MOSTRA / COLLECTING -->
+
+<section class="mostra-section">
+
+<div class="mostra-copy">
+
+<div class="eyebrow">Collect · Discover · Own</div>
+
+<h2>Find a piece that speaks to you.</h2>
+
+<p>
+Explore my work on Mostra. Selected pieces are available
+as original artworks, while some are also offered as
+digital art prints.
+</p>
+
+<a
+class="mostra-button"
+href="https://getmostra.com/artist/daniellahussam"
+target="_blank"
+rel="noopener noreferrer"
+>
+Explore my work on Mostra
+</a>
+
+<div class="mostra-note">
+Discover available artworks and print editions on Mostra.
+</div>
+
+</div>
+
+<a
+class="mostra-mark"
+href="https://getmostra.com/artist/daniellahussam"
+target="_blank"
+rel="noopener noreferrer"
+aria-label="Visit Daniella Husam on Mostra"
+>
+<img src="assets/images/mostra-logo.png" alt="Mostra wordmark">
+</a>
 
 </section>
 
 </main>
 
+<!-- FOOTER -->
+
 <footer class="site-footer">
+
 <span>© 2026 Daniella Husam</span>
+
 <span>Artist · Working internationally</span>
+
 <a href="contact.html">Enquiries & collaborations</a>
+
 </footer>
 
 </body>
