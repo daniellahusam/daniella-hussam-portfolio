@@ -36,6 +36,12 @@ description: >
 
   continue to wander."
 
+  *Had been exhibited in 2 different exhibitions
+
+  1. Mini exhibition at languages city, Amman, Jordan, August 22nd 2024
+
+  2. Not your grandma's exhibition, 101 Reade St. New York, USA, March 20th 2026
+
 
   Available here:
 
