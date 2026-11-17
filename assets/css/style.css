@@ -43,7 +43,7 @@ img {
   display: block;
 }
 
-/* HEADER AND BRAND */
+/* HEADER */
 
 .site-header {
   max-width: 1600px;
@@ -56,37 +56,42 @@ img {
   border-bottom: 1px solid var(--line);
 }
 
+/* BRAND AND SIGNATURE */
+
 .brand {
   display: flex;
   align-items: center;
-  gap: 9px;
-  min-width: 230px;
+  gap: 13px;
+  min-width: 0;
+  flex-shrink: 0;
 }
 
-.brand img {
-  width: 32px;
-  height: 32px;
+.brand .mushroom-mark {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
   object-fit: contain;
-  flex: 0 0 32px;
 }
 
-.brand-name {
-  font-family: 'Allura', cursive;
-  font-size: 34px;
-  line-height: .9;
-  font-weight: 400;
-  letter-spacing: 0;
-  white-space: nowrap;
+.brand-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
 }
 
-.brand-name small {
+.brand .brand-signature {
+  width: 245px;
+  height: auto;
   display: block;
-  margin-top: 5px;
+  object-fit: contain;
+}
+
+.brand-lockup small {
   font-family: var(--sans);
   font-size: 8px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: .22em;
-  text-transform: uppercase;
   color: var(--muted);
 }
 
@@ -97,6 +102,7 @@ img {
   flex-wrap: wrap;
   gap: clamp(10px, 1.8vw, 27px);
   justify-content: flex-end;
+  align-items: center;
 }
 
 .nav a {
@@ -116,7 +122,19 @@ img {
   border-color: var(--accent);
 }
 
-/* MAIN CONTENT */
+.nav .mostra-nav-link {
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+}
+
+.mostra-nav-link img {
+  width: 48px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* MAIN */
 
 main {
   max-width: 1600px;
@@ -159,38 +177,6 @@ h3 {
   letter-spacing: -.055em;
 }
 
-/* SIGNATURE */
-
-.hero h1.signature-name {
-  font-family: 'Allura', cursive;
-  font-weight: 400;
-  font-size: clamp(88px, 13vw, 176px);
-  line-height: .76;
-  letter-spacing: 0;
-}
-
-.hero h1.signature-name span {
-  font-family: 'Allura', cursive;
-  font-weight: 400;
-}
-
-.signature-image-heading {
-  margin: 0 !important;
-  letter-spacing: 0 !important;
-  line-height: 1 !important;
-}
-
-.signature-image-heading img {
-  width: min(100%, 760px);
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
-.hero-copy .signature-image-heading {
-  margin: 0 0 24px !important;
-}
-
 /* GENERAL TEXT */
 
 p {
@@ -213,9 +199,17 @@ p {
   margin-bottom: 30px;
 }
 
-.hero h1 span {
+.signature-image-heading {
+  margin: 0 0 24px !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+}
+
+.signature-image-heading img {
+  width: min(100%, 760px);
+  height: auto;
+  object-fit: contain;
   display: block;
-  color: var(--accent);
 }
 
 .hero-copy p {
@@ -260,7 +254,7 @@ p {
   color: white;
 }
 
-/* HERO ARTWORK */
+/* FEATURED ARTWORK */
 
 .hero-art {
   min-height: 540px;
@@ -313,7 +307,7 @@ p {
   font-weight: 700;
 }
 
-/* SECTION HEADINGS */
+/* SECTION INTRODUCTION */
 
 .section-head {
   padding: 78px 0 30px;
@@ -330,7 +324,7 @@ p {
   font-size: 14px;
 }
 
-/* ARTWORK GALLERY */
+/* ARTWORK GRID */
 
 .card-grid {
   display: grid;
@@ -382,7 +376,7 @@ p {
   color: var(--muted);
 }
 
-/* PAGE INTRODUCTIONS */
+/* INDIVIDUAL PAGE INTRODUCTIONS */
 
 .page-intro {
   padding: 85px 0 48px;
@@ -411,6 +405,23 @@ p {
   font-family: var(--sans);
   font-size: 13px;
   color: #625a65;
+}
+
+/* ARTWORK DETAILS */
+
+.artwork-details {
+  padding: 12px 0 24px;
+}
+
+.artwork-details h3 {
+  margin-bottom: 8px;
+}
+
+.artwork-details p {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 12px 0;
 }
 
 /* ABOUT PAGE */
@@ -502,6 +513,85 @@ p {
   letter-spacing: -.04em;
 }
 
+/* MOSTRA SECTION */
+
+.mostra-section {
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap: 50px;
+  align-items: center;
+  padding: 90px 0;
+  margin: 20px 0 70px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.mostra-copy h2 {
+  font-size: clamp(42px, 6vw, 82px);
+  line-height: .98;
+  letter-spacing: -.07em;
+  margin: 25px 0;
+  max-width: 850px;
+}
+
+.mostra-copy p {
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 650px;
+  margin: 0 0 28px;
+  color: #625a65;
+}
+
+.mostra-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 17px 24px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: .2s;
+}
+
+.mostra-button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.mostra-note {
+  margin-top: 20px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+
+.mostra-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.mostra-mark img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* EMPTY MESSAGE */
+
+.empty-message {
+  padding: 50px 0;
+  color: var(--muted);
+  font-family: var(--sans);
+}
+
 /* FOOTER */
 
 .site-footer {
@@ -530,17 +620,10 @@ p {
   padding-bottom: 4px;
 }
 
-/* ARTWORK DESCRIPTIONS */
-
-.artwork-details p {
-  font-family: var(--sans);
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-/* RESPONSIVE TABLET */
+/* TABLET */
 
 @media(max-width: 900px) {
+
   .site-header {
     align-items: flex-start;
     flex-direction: column;
@@ -576,27 +659,42 @@ p {
   .portrait-placeholder {
     min-height: 360px;
   }
+
+  .mostra-section {
+    grid-template-columns: 1fr .6fr;
+    gap: 25px;
+  }
+
 }
 
-/* RESPONSIVE MOBILE */
+/* MOBILE */
 
 @media(max-width: 560px) {
+
   main {
     padding: 0 6vw;
   }
 
-  .brand img {
-    width: 27px;
-    height: 27px;
-    flex-basis: 27px;
+  .brand .brand-signature {
+    width: 190px;
   }
 
-  .brand-name {
-    font-size: 32px;
+  .brand .mushroom-mark {
+    width: 29px;
+    height: 29px;
+    flex-basis: 29px;
+  }
+
+  .nav {
+    gap: 10px 16px;
   }
 
   .nav a {
     font-size: 9px;
+  }
+
+  .mostra-nav-link img {
+    width: 42px;
   }
 
   .card-grid {
@@ -622,24 +720,28 @@ p {
     padding-left: 6vw;
     padding-right: 6vw;
   }
-}
 
-/* FINAL SIGNATURE AND BRAND DETAILS */
-
-@media(max-width: 760px) {
-  .signature-image-heading img {
-    width: min(100%, 500px);
+  .mostra-section {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 60px 0;
   }
 
-  .brand {
-    min-width: 0;
+  .mostra-copy h2 {
+    font-size: clamp(40px, 11vw, 65px);
   }
-}
 
-.hero-copy p {
-  color: #5f5663;
-}
+  .mostra-copy p {
+    font-size: 15px;
+  }
 
-.nav a {
-  color: #5b5260;
+  .mostra-mark {
+    justify-content: flex-start;
+    padding: 10px 0;
+  }
+
+  .mostra-mark img {
+    max-width: 190px;
+  }
+
 }
