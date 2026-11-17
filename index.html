@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Daniella Husam | Visual Artist</title>
-  <meta name="description" content="Daniella Husam is a multidisciplinary visual artist exploring colour, identity, emotion and the surreal.">
+  <meta name="description" content="Daniella Husam is a multidisciplinary visual artist and IB art educator exploring colour, identity, emotion and the surreal.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lato:wght@400;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lato:wght@400;700&family=Playfair+Display:wght@500;600;700&family=Bowlby+One+SC&display=swap" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -19,7 +19,6 @@
         <small>VISUAL ARTIST</small>
       </span>
     </a>
-
     <nav class="nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="selected-works.html">Selected Works</a>
@@ -32,42 +31,72 @@
     </nav>
   </header>
 
-  <main>
-    <section class="hero-editorial" aria-label="Introduction">
-      <div class="hero-name hero-name-daniella">Daniella</div>
-      <div class="hero-name hero-name-husam">Husam</div>
+  <main class="home-main">
+    <section class="hero-artworld" aria-label="Daniella Husam artist introduction">
+      <div class="hero-word hero-word-daniella" aria-hidden="true">Daniella</div>
+      <div class="hero-word hero-word-husam" aria-hidden="true">Husam</div>
 
-      <div class="hero-portrait">
-        <img src="assets/images/cutout-main.png" alt="Portrait of Daniella Husam in a vivid pink outfit">
+      <div class="portrait-wrap">
+        <img class="portrait-cutout" src="assets/images/cutout-main.png" alt="Daniella Husam wearing a vivid pink outfit">
+        <svg class="portrait-scribble" viewBox="0 0 900 150" aria-hidden="true">
+          <path d="M8 72 C95 25 174 78 258 70 S405 92 472 76 S608 48 682 73 S820 95 892 50" />
+          <path d="M20 96 C132 60 190 116 296 96 S430 119 532 94 S710 111 878 82" />
+        </svg>
       </div>
 
-      <div class="hero-intro">
-        <span class="eyebrow">Contemporary visual artist · Multidisciplinary practice</span>
-        <p>A multidisciplinary visual artist and art educator exploring colour, identity, emotion and the surreal through painting, mixed media and material experimentation.</p>
+      <div class="hero-doodle hero-fish" aria-hidden="true">
+        <svg viewBox="0 0 120 90">
+          <path d="M18 45 Q53 5 88 43 Q55 82 18 45Z M88 43 L111 22 L108 65Z M43 28 Q53 44 43 60" />
+          <circle cx="72" cy="38" r="3" />
+          <path d="M8 20 Q2 13 8 8 M5 70 Q0 76 8 81 M101 8 q8 -6 12 1" />
+        </svg>
+      </div>
+      <div class="hero-doodle hero-spark" aria-hidden="true">✳</div>
+      <div class="hero-doodle hero-mushroom" aria-hidden="true">
+        <svg viewBox="0 0 90 100">
+          <path d="M12 46 Q17 13 45 12 Q74 13 80 46 Q47 57 12 46Z M45 50 L40 88 Q46 94 54 88 L50 50" />
+          <circle cx="33" cy="31" r="3"/><circle cx="54" cy="24" r="3"/><circle cx="65" cy="38" r="2.5"/>
+        </svg>
       </div>
 
-      <a class="scroll-cue" href="#collect" aria-label="Scroll to discover artwork">
-        <span>Scroll to discover</span>
-        <span class="scroll-arrow" aria-hidden="true">↓</span>
-      </a>
+      <aside class="hero-bio">
+        <span class="bio-rule"></span>
+        <div class="bio-copy">
+          <p class="bio-kicker">Contemporary visual artist<br>Multidisciplinary practice</p>
+          <p>A multidisciplinary visual artist and IB art educator exploring colour, identity, emotion and the surreal through painting, mixed media and material experimentation.</p>
+        </div>
+      </aside>
+
+      <div class="hero-bottom-note">Colour · Identity · Emotion · The surreal</div>
     </section>
 
     <section class="mostra-section" id="collect">
       <div class="mostra-copy">
         <div class="eyebrow">Collect · Discover · Own</div>
-        <h2>Find a piece that speaks to you.</h2>
+        <h2>Find a piece that<br>speaks to you.</h2>
         <p>Explore my work on Mostra. Discover original artworks and selected digital prints, and choose the pieces that resonate with you.</p>
         <a class="mostra-button" href="https://getmostra.com/artist/daniellahussam" target="_blank" rel="noopener noreferrer">Discover &amp; Collect</a>
       </div>
-      <a class="mostra-mark" href="https://getmostra.com/artist/daniellahussam" target="_blank" rel="noopener noreferrer" aria-label="Visit Daniella Husam on Mostra">
-        <img src="assets/images/mostra-logo.png" alt="Mostra">
+      <a class="mostra-art-link" href="https://getmostra.com/artist/daniellahussam" target="_blank" rel="noopener noreferrer" aria-label="Discover and collect artwork on Mostra">
+        <img class="mostra-large-logo" src="assets/images/mostra-logo.png" alt="Mostra">
+        <svg class="paper-plane-doodle" viewBox="0 0 240 190" aria-hidden="true">
+          <path d="M18 65 L218 10 L145 174 L112 105 L18 65Z M112 105 L218 10 M112 105 L146 174 M18 65 L145 174" />
+          <path class="plane-trail" d="M18 65 Q-2 92 18 118 Q43 148 75 122" />
+          <circle cx="32" cy="142" r="5"/><circle cx="49" cy="151" r="4"/><circle cx="63" cy="139" r="3"/>
+        </svg>
       </a>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <span>© 2026 Daniella Husam</span>
-    <span>Artist · Working internationally</span>
+  <footer class="site-footer home-footer">
+    <div class="footer-socials" aria-label="Social links">
+      <a href="https://www.instagram.com/daniellartem/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">◎</a>
+      <a href="mailto:daniellahussam@mail.com" aria-label="Email Daniella">✉</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Daniella Husam</span>
+      <span>Artist · Working internationally<br><a href="mailto:daniellahussam@mail.com">daniellahussam@mail.com</a></span>
+    </div>
   </footer>
 </body>
 </html>
