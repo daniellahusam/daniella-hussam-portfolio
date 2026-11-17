@@ -12,13 +12,9 @@
   --display: 'DM Sans', sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -29,47 +25,35 @@ body {
   line-height: 1.6;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--accent);
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--accent); }
+img { max-width: 100%; display: block; }
 
 /* HEADER */
 
 .site-header {
   max-width: 1600px;
   margin: auto;
-  padding: 22px 5vw 18px;
+  padding: 14px 5vw 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
+  gap: 24px;
   border-bottom: 1px solid var(--line);
 }
-
-/* BRAND: MUSHROOM + HANDWRITTEN SIGNATURE */
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   min-width: 0;
   flex-shrink: 0;
 }
 
 .brand .mushroom-mark {
-  width: 38px;
-  height: 38px;
-  flex: 0 0 38px;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
   object-fit: contain;
 }
 
@@ -77,11 +61,11 @@ img {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 5px;
+  gap: 4px;
 }
 
 .brand .brand-signature {
-  width: 220px;
+  width: 175px;
   height: auto;
   display: block;
   object-fit: contain;
@@ -89,9 +73,9 @@ img {
 
 .brand-lockup small {
   font-family: var(--sans);
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 700;
-  letter-spacing: .22em;
+  letter-spacing: .20em;
   color: var(--muted);
 }
 
@@ -153,9 +137,7 @@ main {
 
 /* HEADINGS */
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
   font-family: var(--display);
   font-weight: 800;
   line-height: .94;
@@ -163,21 +145,13 @@ h3 {
   margin: 0;
 }
 
-h1 {
-  font-size: clamp(58px, 10vw, 150px);
-}
-
-h2 {
-  font-size: clamp(38px, 6vw, 82px);
-}
-
+h1 { font-size: clamp(58px, 10vw, 150px); }
+h2 { font-size: clamp(38px, 6vw, 82px); }
 h3 {
   font-size: 25px;
   line-height: 1.05;
   letter-spacing: -.055em;
 }
-
-/* GENERAL TEXT */
 
 p {
   max-width: 690px;
@@ -195,9 +169,7 @@ p {
   align-items: center;
 }
 
-.hero-copy .eyebrow {
-  margin-bottom: 30px;
-}
+.hero-copy .eyebrow { margin-bottom: 30px; }
 
 .signature-image-heading {
   margin: 0 0 24px !important;
@@ -272,21 +244,7 @@ p {
   min-height: 540px;
   position: absolute;
   inset: 0;
-  object-fit: cover;
-}
-
-.art-instruction {
-  position: relative;
-  z-index: 1;
-  max-width: 260px;
-  padding: 22px;
-  background: rgba(242, 238, 230, .92);
-  text-align: center;
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--muted);
+  object-fit: contain;
 }
 
 /* INTRO STRIP */
@@ -347,9 +305,7 @@ p {
   transition: transform .5s;
 }
 
-.work-card:hover .visual img {
-  transform: scale(1.025);
-}
+.work-card:hover .visual img { transform: scale(1.025); }
 
 .visual-empty {
   height: 100%;
@@ -364,9 +320,7 @@ p {
   text-transform: uppercase;
 }
 
-.work-card h3 {
-  margin: 16px 0 7px;
-}
+.work-card h3 { margin: 16px 0 7px; }
 
 .meta {
   font-family: var(--sans);
@@ -376,7 +330,7 @@ p {
   color: var(--muted);
 }
 
-/* INDIVIDUAL PAGE INTRODUCTIONS */
+/* PAGE INTRODUCTIONS */
 
 .page-intro {
   padding: 85px 0 48px;
@@ -409,13 +363,9 @@ p {
 
 /* ARTWORK DETAILS */
 
-.artwork-details {
-  padding: 12px 0 24px;
-}
+.artwork-details { padding: 12px 0 24px; }
 
-.artwork-details h3 {
-  margin-bottom: 8px;
-}
+.artwork-details h3 { margin-bottom: 8px; }
 
 .artwork-details p {
   font-family: var(--sans);
@@ -454,9 +404,7 @@ p {
   object-fit: cover;
 }
 
-.about-copy h2 {
-  margin: 15px 0 25px;
-}
+.about-copy h2 { margin: 15px 0 25px; }
 
 .about-copy p {
   font-family: var(--sans);
@@ -623,11 +571,10 @@ p {
 /* TABLET */
 
 @media(max-width: 900px) {
-
   .site-header {
     align-items: flex-start;
     flex-direction: column;
-    padding: 20px 6vw 16px;
+    padding: 16px 6vw 14px;
   }
 
   .nav {
@@ -646,9 +593,7 @@ p {
     min-height: 380px;
   }
 
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
 
   .about-layout,
   .contact-layout {
@@ -656,9 +601,7 @@ p {
     gap: 35px;
   }
 
-  .portrait-placeholder {
-    min-height: 360px;
-  }
+  .portrait-placeholder { min-height: 360px; }
 
   .mostra-section {
     grid-template-columns: 1fr .6fr;
@@ -669,41 +612,26 @@ p {
 /* MOBILE */
 
 @media(max-width: 560px) {
+  main { padding: 0 6vw; }
 
-  main {
-    padding: 0 6vw;
-  }
-
-  .brand .brand-signature {
-    width: 190px;
-  }
+  .brand .brand-signature { width: 155px; }
 
   .brand .mushroom-mark {
-    width: 32px;
-    height: 32px;
-    flex-basis: 32px;
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
   }
 
-  .nav {
-    gap: 10px 16px;
-  }
-
-  .nav a {
-    font-size: 9px;
-  }
-
-  .mostra-nav-link img {
-    width: 42px;
-  }
+  .nav { gap: 10px 16px; }
+  .nav a { font-size: 9px; }
+  .mostra-nav-link img { width: 42px; }
 
   .card-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
 
-  .work-card .visual {
-    height: 390px;
-  }
+  .work-card .visual { height: 390px; }
 
   .section-head {
     align-items: flex-start;
@@ -711,9 +639,7 @@ p {
     padding-top: 55px;
   }
 
-  .info-row {
-    grid-template-columns: 75px 1fr;
-  }
+  .info-row { grid-template-columns: 75px 1fr; }
 
   .site-footer {
     padding-left: 6vw;
@@ -726,20 +652,13 @@ p {
     padding: 60px 0;
   }
 
-  .mostra-copy h2 {
-    font-size: clamp(40px, 11vw, 65px);
-  }
-
-  .mostra-copy p {
-    font-size: 15px;
-  }
+  .mostra-copy h2 { font-size: clamp(40px, 11vw, 65px); }
+  .mostra-copy p { font-size: 15px; }
 
   .mostra-mark {
     justify-content: flex-start;
     padding: 10px 0;
   }
 
-  .mostra-mark img {
-    max-width: 190px;
-  }
+  .mostra-mark img { max-width: 190px; }
 }
