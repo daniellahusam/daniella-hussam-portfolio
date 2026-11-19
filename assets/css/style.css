@@ -1076,25 +1076,27 @@ body[data-category="Selected Works"] .artwork-details {
 }
 
 
-/* Sketches: row-by-row grid so newest years appear first visually */
-.studies-year-grid {
+
+
+
+/* Sketches and Sculptures: chronological, larger two-column grid */
+.chronological-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
-  column-gap: 22px;
-  row-gap: 34px;
+  column-gap: 30px;
+  row-gap: 42px;
 }
-.studies-year-grid .work-card {
+.chronological-grid .work-card {
   display: block;
   width: 100%;
   margin: 0;
 }
-@media (max-width: 900px) {
-  .studies-year-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.chronological-grid .work-card .visual img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 @media (max-width: 600px) {
-  .studies-year-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
-}
-@media (max-width: 420px) {
-  .studies-year-grid { grid-template-columns: 1fr; }
+  .chronological-grid { grid-template-columns: 1fr; gap: 30px; }
 }
