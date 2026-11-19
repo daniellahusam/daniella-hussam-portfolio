@@ -1769,3 +1769,31 @@ html, body, body * {
 /* Achievements page: start with the timeline grid, without a repeated page title */
 .achievements-main { padding-top: clamp(28px, 4vw, 48px); }
 .achievements-page-intro { display: none; }
+
+
+/* Multiple CMS-managed photographs for each achievement */
+.achievement-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+  max-width: 780px;
+}
+.achievement-gallery:empty { display: none; }
+.achievement-gallery-item {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: rgba(91, 0, 100, .05);
+}
+.achievement-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+.achievement-gallery-item:hover img { transform: scale(1.035); }
+@media (max-width: 600px) {
+  .achievement-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+}
