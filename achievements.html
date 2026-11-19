@@ -119,13 +119,43 @@
                 <h3>${escapeHTML(entry.title)}</h3>
                 <p class="achievement-venue">${escapeHTML(entry.venue)}</p>
                 <p>${escapeHTML(entry.description)}</p>
-                ${Array.isArray(entry.photos) && entry.photos.length ? `<div class="achievement-gallery" aria-label="Photos for ${escapeHTML(entry.title)}">${entry.photos.map((photo, photoIndex) => `<a class="achievement-gallery-item" href="${escapeHTML(photo)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHTML(photo)}" alt="${escapeHTML(entry.title)} photograph ${photoIndex + 1}" loading="lazy"></a>`).join('')}</div>` : ''}
               </div>
+              ${Array.isArray(entry.photos) && entry.photos.length ? `
+                <div class="achievement-carousel" data-carousel aria-label="Photographs for ${escapeHTML(entry.title)}">
+                  <div class="achievement-carousel-viewport">
+                    <div class="achievement-carousel-track">
+                      ${entry.photos.map((photo, photoIndex) => `<a class="achievement-carousel-slide" href="${escapeHTML(photo)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHTML(photo)}" alt="${escapeHTML(entry.title)} photograph ${photoIndex + 1}" loading="lazy"></a>`).join('')}
+                    </div>
+                  </div>
+                  ${entry.photos.length > 1 ? `<div class="achievement-carousel-controls">
+                    <button class="achievement-carousel-arrow" type="button" data-direction="-1" aria-label="Previous photograph">←</button>
+                    <span class="achievement-carousel-count"><span data-current>01</span> / ${String(entry.photos.length).padStart(2,'0')}</span>
+                    <button class="achievement-carousel-arrow" type="button" data-direction="1" aria-label="Next photograph">→</button>
+                  </div>` : ''}
+                </div>` : '<div class="achievement-carousel-placeholder" aria-hidden="true"></div>'}
               <span class="achievement-entry-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
             </article>
           `).join('');
         }
         if (data.closing_note) closingNote.textContent = data.closing_note;
+        document.querySelectorAll('[data-carousel]').forEach(carousel => {
+          const viewport = carousel.querySelector('.achievement-carousel-viewport');
+          const slides = Array.from(carousel.querySelectorAll('.achievement-carousel-slide'));
+          const current = carousel.querySelector('[data-current]');
+          const update = () => {
+            const width = viewport.clientWidth || 1;
+            const index = Math.min(slides.length - 1, Math.max(0, Math.round(viewport.scrollLeft / width)));
+            if (current) current.textContent = String(index + 1).padStart(2, '0');
+          };
+          carousel.querySelectorAll('[data-direction]').forEach(button => {
+            button.addEventListener('click', () => {
+              const direction = Number(button.dataset.direction);
+              viewport.scrollTo({ left: viewport.scrollLeft + direction * (viewport.clientWidth || 1), behavior: 'smooth' });
+            });
+          });
+          viewport.addEventListener('scroll', update, { passive: true });
+          update();
+        });
       } catch (error) {
         console.warn('Using the built-in achievements content.', error);
       }
