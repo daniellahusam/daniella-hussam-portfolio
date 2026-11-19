@@ -1298,3 +1298,25 @@ html, body, body * {
     transform: translateY(0);
   }
 }
+
+
+/* Search-friendly gallery introductions */
+.gallery-intro {
+  max-width: 860px;
+  margin: 0 auto 34px;
+  padding: 24px 0 0;
+}
+.gallery-intro h1 {
+  margin: 0 0 12px;
+  color: var(--purple, #4A075F);
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 1.15;
+}
+.gallery-intro p {
+  max-width: 720px;
+  margin: 0;
+  line-height: 1.7;
+}
+@media (max-width: 700px) {
+  .gallery-intro { padding-top: 16px; margin-bottom: 24px; }
+}
