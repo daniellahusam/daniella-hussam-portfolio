@@ -9,7 +9,8 @@
       "title": "New York",
       "venue": "The Holy Art Gallery",
       "description": "Selected work exhibited in New York.",
-      "upcoming": false
+      "upcoming": false,
+      "photos": []
     },
     {
       "day_label": "April",
@@ -19,7 +20,8 @@
       "title": "Visual Art Journal",
       "venue": "Artist feature",
       "description": "A feature highlighting my artistic practice.",
-      "upcoming": false
+      "upcoming": false,
+      "photos": []
     },
     {
       "day_label": "30",
@@ -29,7 +31,8 @@
       "title": "Madrid",
       "venue": "Spain",
       "description": "Upcoming exhibition presentation in Madrid.",
-      "upcoming": true
+      "upcoming": true,
+      "photos": []
     }
   ],
   "closing_note": "This page will continue to grow alongside the work, with future exhibitions, publications, conversations and creative projects added over time."
