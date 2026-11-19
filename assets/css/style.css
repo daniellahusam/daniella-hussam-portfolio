@@ -928,15 +928,16 @@ body[data-category="Selected Works"] .work-card:hover .visual img {
 }
 
 
-/* Selected Works: editorial masonry grid with a larger Mushroom feature */
+/* Selected Works: stable editorial grid, preserving every artwork's full proportions */
 body[data-category="Selected Works"] .card-grid {
   columns: unset;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: 8px;
-  grid-auto-flow: dense;
+  grid-auto-rows: auto;
+  grid-auto-flow: row;
+  align-items: start;
   column-gap: clamp(16px, 1.8vw, 28px);
-  row-gap: 24px;
+  row-gap: 30px;
 }
 body[data-category="Selected Works"] .work-card {
   display: block;
@@ -944,9 +945,26 @@ body[data-category="Selected Works"] .work-card {
   min-width: 0;
   margin: 0;
   break-inside: auto;
+  align-self: start;
 }
 body[data-category="Selected Works"] .work-card.mushroom-feature {
   grid-column: span 2;
+}
+body[data-category="Selected Works"] .work-card .visual {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+body[data-category="Selected Works"] .work-card .visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+body[data-category="Selected Works"] .artwork-details {
+  position: relative;
+  margin-top: 10px;
 }
 @media (max-width: 1100px) {
   body[data-category="Selected Works"] .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
