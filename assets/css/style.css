@@ -906,3 +906,23 @@ body[data-category="Selected Works"] .artwork-purchase {
 @media (max-width: 420px) {
   body[data-category="Selected Works"] .card-grid { columns: 1; }
 }
+
+
+/* Selected Works: always show each artwork in full, with its original aspect ratio */
+body[data-category="Selected Works"] .work-card .visual {
+  height: auto;
+  overflow: visible;
+}
+body[data-category="Selected Works"] .work-card .visual img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  object-fit: unset !important;
+  object-position: center;
+  transform: none;
+}
+body[data-category="Selected Works"] .work-card:hover .visual img {
+  transform: none;
+}
