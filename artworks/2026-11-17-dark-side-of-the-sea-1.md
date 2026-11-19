@@ -1,5 +1,5 @@
 ---
-title: Dark side of the sea
+title: Robbed childhood
 category: Installations
 year: "2020"
 medium: wood, clay, resin, found objects
