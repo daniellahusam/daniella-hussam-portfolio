@@ -46,65 +46,32 @@
   </header>
 
   <main class="achievements-main">
-    <section class="achievements-page-intro">
-      <span class="eyebrow">Exhibitions · Publications · Milestones</span>
-      <h1>Outside the studio<span>.</span></h1>
-      <p>A growing record of the places, people and platforms that have welcomed my work beyond the studio.</p>
-    </section>
-
-    <section class="achievements-year" aria-labelledby="achievements-2026">
+    <section class="achievements-year" aria-labelledby="achievements-year">
       <div class="achievements-year-heading">
         <span class="eyebrow">Selected milestones</span>
-        <h2 id="achievements-2026">2026</h2>
+        <h2 id="achievements-year">2026</h2>
       </div>
-
-      <div class="achievements-timeline">
+      <div class="achievements-timeline" id="achievements-timeline" aria-live="polite">
         <article class="achievement-entry">
-          <div class="achievement-entry-date">
-            <span>20</span>
-            <time datetime="2026-03-20">March 2026</time>
-          </div>
-          <div class="achievement-entry-content">
-            <span class="achievement-type">Exhibition</span>
-            <h3>New York</h3>
-            <p class="achievement-venue">The Holy Art Gallery</p>
-            <p>Selected work exhibited in New York.</p>
-          </div>
+          <div class="achievement-entry-date"><span>20</span><time datetime="2026-03-20">March 2026</time></div>
+          <div class="achievement-entry-content"><span class="achievement-type">Exhibition</span><h3>New York</h3><p class="achievement-venue">The Holy Art Gallery</p><p>Selected work exhibited in New York.</p></div>
           <span class="achievement-entry-index" aria-hidden="true">01</span>
         </article>
-
         <article class="achievement-entry">
-          <div class="achievement-entry-date">
-            <span>April</span>
-            <time datetime="2026-04">2026</time>
-          </div>
-          <div class="achievement-entry-content">
-            <span class="achievement-type">Publication</span>
-            <h3>Visual Art Journal</h3>
-            <p class="achievement-venue">Artist feature</p>
-            <p>A feature highlighting my artistic practice.</p>
-          </div>
+          <div class="achievement-entry-date"><span>April</span><time datetime="2026-04">2026</time></div>
+          <div class="achievement-entry-content"><span class="achievement-type">Publication</span><h3>Visual Art Journal</h3><p class="achievement-venue">Artist feature</p><p>A feature highlighting my artistic practice.</p></div>
           <span class="achievement-entry-index" aria-hidden="true">02</span>
         </article>
-
         <article class="achievement-entry achievement-entry-upcoming">
-          <div class="achievement-entry-date">
-            <span>30</span>
-            <time datetime="2026-11-30">November 2026</time>
-          </div>
-          <div class="achievement-entry-content">
-            <span class="achievement-type">Upcoming exhibition</span>
-            <h3>Madrid</h3>
-            <p class="achievement-venue">Spain</p>
-            <p>Upcoming exhibition presentation in Madrid.</p>
-          </div>
+          <div class="achievement-entry-date"><span>30</span><time datetime="2026-11-30">November 2026</time></div>
+          <div class="achievement-entry-content"><span class="achievement-type">Upcoming exhibition</span><h3>Madrid</h3><p class="achievement-venue">Spain</p><p>Upcoming exhibition presentation in Madrid.</p></div>
           <span class="achievement-entry-index" aria-hidden="true">03</span>
         </article>
       </div>
     </section>
 
     <section class="achievements-page-note">
-      <p>This page will continue to grow alongside the work, with future exhibitions, publications, conversations and creative projects added over time.</p>
+      <p id="achievements-closing-note">This page will continue to grow alongside the work, with future exhibitions, publications, conversations and creative projects added over time.</p>
       <a class="text-link-button" href="mailto:daniellahussam@mail.com">For enquiries <span aria-hidden="true">↗</span></a>
     </section>
     <a class="achievements-back-link" href="index.html">← Back to home</a>
@@ -124,5 +91,41 @@
       <span>Artist · Working internationally<br><a href="mailto:daniellahussam@mail.com">daniellahussam@mail.com</a></span>
     </div>
   </footer>
+  <script>
+    (async function () {
+      const timeline = document.getElementById('achievements-timeline');
+      const yearHeading = document.getElementById('achievements-year');
+      const closingNote = document.getElementById('achievements-closing-note');
+      const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[char]));
+      try {
+        const response = await fetch('content/achievements.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Could not load achievements content');
+        const data = await response.json();
+        if (data.year) yearHeading.textContent = data.year;
+        if (Array.isArray(data.entries)) {
+          timeline.innerHTML = data.entries.map((entry, index) => `
+            <article class="achievement-entry ${entry.upcoming ? 'achievement-entry-upcoming' : ''}">
+              <div class="achievement-entry-date">
+                <span>${escapeHTML(entry.day_label)}</span>
+                <time datetime="${escapeHTML(entry.date)}">${escapeHTML(entry.date_label)}</time>
+              </div>
+              <div class="achievement-entry-content">
+                <span class="achievement-type">${escapeHTML(entry.type)}</span>
+                <h3>${escapeHTML(entry.title)}</h3>
+                <p class="achievement-venue">${escapeHTML(entry.venue)}</p>
+                <p>${escapeHTML(entry.description)}</p>
+              </div>
+              <span class="achievement-entry-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
+            </article>
+          `).join('');
+        }
+        if (data.closing_note) closingNote.textContent = data.closing_note;
+      } catch (error) {
+        console.warn('Using the built-in achievements content.', error);
+      }
+    })();
+  </script>
 </body>
 </html>
