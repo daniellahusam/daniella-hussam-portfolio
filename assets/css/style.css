@@ -1443,3 +1443,81 @@ html, body, body * {
   .achievement-item p { grid-column: 1; margin-bottom: 0; }
   .achievement-item time { grid-column: 2; grid-row: 2 / span 2; text-align: right; }
 }
+
+
+/* One-time homepage intro animation: a short entrance, then everything rests */
+@keyframes heroPortraitArrive {
+  from { opacity: 0; transform: translateY(10px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes heroNameGlitch {
+  0% { opacity: 0; transform: translateX(-12px) skewX(-3deg); filter: blur(2px); }
+  55% { opacity: 1; transform: translateX(2px) skewX(1deg); filter: blur(0); }
+  72% { transform: translateX(-1px) skewX(-.4deg); }
+  100% { opacity: 1; transform: translateX(0) skewX(0); filter: none; }
+}
+@keyframes heroNameFollow {
+  0% { opacity: 0; transform: translateY(9px) rotate(1deg); filter: blur(2px); }
+  70% { opacity: 1; transform: translateY(-2px) rotate(-.3deg); filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) rotate(0); filter: none; }
+}
+@keyframes heroDoodlePop {
+  0% { opacity: 0; transform: scale(.72) rotate(-5deg); }
+  72% { opacity: 1; transform: scale(1.06) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes heroDrawReveal {
+  from { opacity: 0; clip-path: inset(100% 0 0 0); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+@keyframes heroLineReveal {
+  from { opacity: 0; clip-path: inset(0 0 100% 0); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+@keyframes heroSoftFade {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-artworld .hero-portrait-layer {
+  opacity: 0;
+  animation: heroPortraitArrive .95s cubic-bezier(.2,.75,.25,1) .28s both !important;
+}
+.hero-artworld .hero-name-daniella {
+  opacity: 0;
+  transform-origin: center;
+  animation: heroNameGlitch .72s ease-out .12s both !important;
+}
+.hero-artworld .hero-name-husam {
+  opacity: 0;
+  animation: heroNameFollow .78s cubic-bezier(.2,.8,.25,1) .48s both !important;
+}
+.hero-artworld .hero-pink-doodles {
+  opacity: 0;
+  transform-origin: center;
+  animation: heroDoodlePop .62s cubic-bezier(.2,.8,.25,1) 1.08s both !important;
+}
+.hero-artworld .hero-purple-scribble {
+  opacity: 0;
+  animation: heroDrawReveal 1.05s ease-out 1.38s both !important;
+}
+.hero-artworld .hero-pink-line {
+  opacity: 0;
+  animation: heroLineReveal .72s ease-out 1.72s both !important;
+}
+.hero-artworld .hero-tagline {
+  opacity: 0;
+  animation: heroSoftFade .8s ease-out 2.02s both !important;
+}
+.hero-artworld .hero-artist-statement {
+  opacity: 0;
+  animation: heroSoftFade .9s ease-out 2.48s both !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-artworld .hero-layer {
+    opacity: 1 !important;
+    animation: none !important;
+    clip-path: none !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
