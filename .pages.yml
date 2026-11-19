@@ -81,6 +81,16 @@ content:
           - name: description
             label: Short description
             type: text
+          - name: photos
+            label: Photos (upload up to 10)
+            type: image
+            list: false
+            options:
+              multiple:
+                max: 10
+              unique: true
+              extensions: [jpg, jpeg, png, webp, gif]
+              path: assets/images/achievements
           - name: upcoming
             label: Upcoming event
             type: boolean
