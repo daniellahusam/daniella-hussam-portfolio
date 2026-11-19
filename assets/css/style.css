@@ -1197,3 +1197,8 @@ body[data-category="Studies"] .chronological-grid .work-card .visual img {
   .projects-layout > .project-statement,
   .projects-layout > .projects-gallery { grid-column:1 !important; grid-row:auto !important; }
 }
+
+/* Site-wide typography: use Lato for every text element */
+html, body, body * {
+  font-family: 'Lato', sans-serif !important;
+}
