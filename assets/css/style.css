@@ -1764,3 +1764,8 @@ html, body, body * {
   .achievement-entry-index { grid-column: 2; grid-row: 1 / span 2; }
   .achievements-page-note { align-items: flex-start; flex-direction: column; }
 }
+
+
+/* Achievements page: start with the timeline grid, without a repeated page title */
+.achievements-main { padding-top: clamp(28px, 4vw, 48px); }
+.achievements-page-intro { display: none; }
