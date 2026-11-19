@@ -1,0 +1,36 @@
+{
+  "year": "2026",
+  "entries": [
+    {
+      "day_label": "20",
+      "date_label": "March 2026",
+      "date": "2026-03-20",
+      "type": "Exhibition",
+      "title": "New York",
+      "venue": "The Holy Art Gallery",
+      "description": "Selected work exhibited in New York.",
+      "upcoming": false
+    },
+    {
+      "day_label": "April",
+      "date_label": "2026",
+      "date": "2026-04",
+      "type": "Publication",
+      "title": "Visual Art Journal",
+      "venue": "Artist feature",
+      "description": "A feature highlighting my artistic practice.",
+      "upcoming": false
+    },
+    {
+      "day_label": "30",
+      "date_label": "November 2026",
+      "date": "2026-11-30",
+      "type": "Upcoming exhibition",
+      "title": "Madrid",
+      "venue": "Spain",
+      "description": "Upcoming exhibition presentation in Madrid.",
+      "upcoming": true
+    }
+  ],
+  "closing_note": "This page will continue to grow alongside the work, with future exhibitions, publications, conversations and creative projects added over time."
+}
