@@ -43,6 +43,51 @@ content:
         label: Artwork image
         type: image
 
+  - name: achievements
+    label: Outside the Studio
+    type: file
+    path: content/achievements.json
+    format: json
+    fields:
+      - name: year
+        label: Timeline year
+        type: string
+      - name: entries
+        label: Exhibitions and features
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title} · {type}"
+        fields:
+          - name: day_label
+            label: Date emphasis (e.g. 20 or April)
+            type: string
+          - name: date_label
+            label: Date
+            type: string
+          - name: date
+            label: Date value (YYYY-MM-DD)
+            type: string
+          - name: type
+            label: Category
+            type: string
+          - name: title
+            label: Title or location
+            type: string
+          - name: venue
+            label: Venue or publication
+            type: string
+          - name: description
+            label: Short description
+            type: text
+          - name: upcoming
+            label: Upcoming event
+            type: boolean
+      - name: closing_note
+        label: Closing note
+        type: text
+
   - name: homepage
     label: Home Page
     type: file
