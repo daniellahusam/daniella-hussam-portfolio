@@ -54,17 +54,20 @@
       <div class="achievements-timeline" id="achievements-timeline" aria-live="polite">
         <article class="achievement-entry">
           <div class="achievement-entry-date"><span>20</span><time datetime="2026-03-20">March 2026</time></div>
-          <div class="achievement-entry-content"><span class="achievement-type">Exhibition</span><h3>New York</h3><p class="achievement-venue">The Holy Art Gallery</p><p>Selected work exhibited in New York.</p></div>
+          <div class="achievement-entry-content"><span class="achievement-type">Exhibition</span><h3>New York</h3><p class="achievement-venue">The Holy Art Gallery</p><p>Selected work exhibited in New York.</p>
+            <div class="achievement-gallery" aria-label="New York exhibition photographs"></div></div>
           <span class="achievement-entry-index" aria-hidden="true">01</span>
         </article>
         <article class="achievement-entry">
           <div class="achievement-entry-date"><span>April</span><time datetime="2026-04">2026</time></div>
-          <div class="achievement-entry-content"><span class="achievement-type">Publication</span><h3>Visual Art Journal</h3><p class="achievement-venue">Artist feature</p><p>A feature highlighting my artistic practice.</p></div>
+          <div class="achievement-entry-content"><span class="achievement-type">Publication</span><h3>Visual Art Journal</h3><p class="achievement-venue">Artist feature</p><p>A feature highlighting my artistic practice.</p>
+            <div class="achievement-gallery" aria-label="Visual Art Journal photographs"></div></div>
           <span class="achievement-entry-index" aria-hidden="true">02</span>
         </article>
         <article class="achievement-entry achievement-entry-upcoming">
           <div class="achievement-entry-date"><span>30</span><time datetime="2026-11-30">November 2026</time></div>
-          <div class="achievement-entry-content"><span class="achievement-type">Upcoming exhibition</span><h3>Madrid</h3><p class="achievement-venue">Spain</p><p>Upcoming exhibition presentation in Madrid.</p></div>
+          <div class="achievement-entry-content"><span class="achievement-type">Upcoming exhibition</span><h3>Madrid</h3><p class="achievement-venue">Spain</p><p>Upcoming exhibition presentation in Madrid.</p>
+            <div class="achievement-gallery" aria-label="Madrid exhibition photographs"></div></div>
           <span class="achievement-entry-index" aria-hidden="true">03</span>
         </article>
       </div>
@@ -116,6 +119,7 @@
                 <h3>${escapeHTML(entry.title)}</h3>
                 <p class="achievement-venue">${escapeHTML(entry.venue)}</p>
                 <p>${escapeHTML(entry.description)}</p>
+                ${Array.isArray(entry.photos) && entry.photos.length ? `<div class="achievement-gallery" aria-label="Photos for ${escapeHTML(entry.title)}">${entry.photos.map((photo, photoIndex) => `<a class="achievement-gallery-item" href="${escapeHTML(photo)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHTML(photo)}" alt="${escapeHTML(entry.title)} photograph ${photoIndex + 1}" loading="lazy"></a>`).join('')}</div>` : ''}
               </div>
               <span class="achievement-entry-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
             </article>
