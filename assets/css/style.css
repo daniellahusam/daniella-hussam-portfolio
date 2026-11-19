@@ -856,3 +856,53 @@ body { padding-top: 104px; }
     margin-bottom: 24px;
   }
 }
+
+
+/* Selected Works: compact editorial masonry grid inspired by the supplied reference */
+body[data-category="Selected Works"] .gallery-main {
+  width: 100%;
+  max-width: 1800px;
+  padding: 28px clamp(24px, 4vw, 64px) 0;
+}
+body[data-category="Selected Works"] .card-grid {
+  columns: 4;
+  column-gap: clamp(16px, 1.8vw, 28px);
+  padding-bottom: 80px;
+}
+body[data-category="Selected Works"] .work-card {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 26px;
+  break-inside: avoid;
+}
+body[data-category="Selected Works"] .work-card .visual img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+body[data-category="Selected Works"] .artwork-details {
+  padding-top: 11px;
+}
+body[data-category="Selected Works"] .artwork-line {
+  font-size: 12px;
+  line-height: 1.6;
+}
+body[data-category="Selected Works"] .artwork-price {
+  font-size: 11px;
+  margin-top: 4px;
+}
+body[data-category="Selected Works"] .artwork-purchase {
+  margin-top: 5px;
+}
+@media (max-width: 1100px) {
+  body[data-category="Selected Works"] .card-grid { columns: 3; }
+}
+@media (max-width: 700px) {
+  body[data-category="Selected Works"] .gallery-main { padding: 20px 5vw 0; }
+  body[data-category="Selected Works"] .card-grid { columns: 2; column-gap: 14px; }
+  body[data-category="Selected Works"] .work-card { margin-bottom: 22px; }
+  body[data-category="Selected Works"] .artwork-line { font-size: 11px; }
+}
+@media (max-width: 420px) {
+  body[data-category="Selected Works"] .card-grid { columns: 1; }
+}
