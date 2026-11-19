@@ -15,6 +15,7 @@ const OWNER="daniellahusam", REPO="daniella-hussam-portfolio", BRANCH="main";
 const CATEGORY= document.body.dataset.category;
 const IS_PROJECTS = CATEGORY==="Projects";
 const grid=document.getElementById("artwork-grid");
+if(CATEGORY==="Studies") grid.classList.add("studies-year-grid");
 const viewer=document.getElementById("zoom-viewer"), stage=document.getElementById("zoom-stage"), zoomImage=document.getElementById("zoom-image"), zoomLevel=document.getElementById("zoom-level");
 let scale=1, x=0, y=0, dragging=false, sx=0, sy=0, px=0, py=0;
 function field(md,key){const m=md.match(new RegExp("^"+key+":\\s*(.*)$","m"));return m?m[1].trim().replace(/^["']|["']$/g,""):"";}
