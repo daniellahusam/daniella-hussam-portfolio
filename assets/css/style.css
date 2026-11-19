@@ -1536,11 +1536,10 @@ html, body, body * {
   100% { opacity: 1; transform: translateY(0) rotate(0) skewX(0); }
 }
 @keyframes canvaPortraitRise {
-  0%   { opacity: 0; transform: translateY(48px) scale(.978); }
-  22%  { opacity: .55; transform: translateY(27px) scale(.987); }
-  58%  { opacity: 1; transform: translateY(-5px) scale(1.008); }
-  78%  { transform: translateY(2px) scale(.998); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+  0%   { opacity: 0; transform: translate3d(0, 48px, 0); }
+  30%  { opacity: .7; transform: translate3d(0, 25px, 0); }
+  75%  { opacity: 1; transform: translate3d(0, 4px, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 @keyframes canvaPop {
   0%   { opacity: 0; transform: scale(.72) rotate(-7deg); }
@@ -1563,7 +1562,9 @@ html, body, body * {
 .hero-artworld .hero-portrait-layer {
   opacity: 0;
   transform-origin: 50% 90%;
-  animation: canvaPortraitRise 2.25s cubic-bezier(.18,.78,.25,1) .3s both !important;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  animation: canvaPortraitRise 2.25s cubic-bezier(.22,.68,.24,1) .3s both !important;
 }
 .hero-artworld .hero-name-daniella {
   opacity: 0;
