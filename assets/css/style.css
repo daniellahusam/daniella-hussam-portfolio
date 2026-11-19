@@ -1606,3 +1606,161 @@ html, body, body * {
     transform: none !important;
   }
 }
+
+
+/* Outside the Studio: full achievements page */
+.text-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0 8px;
+  border-bottom: 1px solid var(--purple);
+  color: var(--purple);
+  font: 700 10px/1.4 var(--ui);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: color .25s, border-color .25s, gap .25s;
+}
+.text-link-button:hover {
+  color: var(--pink);
+  border-color: var(--pink);
+  gap: 20px;
+}
+.achievements-see-more {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: -8px;
+}
+.achievements-main {
+  padding-top: clamp(42px, 7vw, 88px);
+  padding-bottom: 70px;
+}
+.achievements-page-intro {
+  max-width: 850px;
+  padding: 0 0 clamp(54px, 8vw, 100px);
+}
+.achievements-page-intro h1 {
+  margin: 15px 0 18px;
+  color: var(--purple);
+  font: 700 clamp(44px, 7vw, 88px)/1.02 'Playfair Display', Georgia, serif;
+  letter-spacing: -.055em;
+}
+.achievements-page-intro h1 span { color: var(--pink); }
+.achievements-page-intro > p {
+  max-width: 570px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.8;
+}
+.achievements-year {
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+}
+.achievements-year-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+.achievements-year-heading h2 {
+  margin: 0;
+  color: var(--purple);
+  font: 600 clamp(38px, 5vw, 60px)/1 'Playfair Display', Georgia, serif;
+  letter-spacing: -.04em;
+}
+.achievements-timeline { border-top: 1px solid var(--line); }
+.achievement-entry {
+  display: grid;
+  grid-template-columns: minmax(130px, .34fr) minmax(0, 1fr) 44px;
+  gap: clamp(20px, 4vw, 58px);
+  align-items: start;
+  padding: clamp(28px, 4vw, 48px) 0;
+  border-bottom: 1px solid var(--line);
+}
+.achievement-entry-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  color: var(--purple);
+}
+.achievement-entry-date > span {
+  font: 600 clamp(30px, 4vw, 46px)/1 'Playfair Display', Georgia, serif;
+}
+.achievement-entry-date time {
+  color: var(--muted);
+  font: 700 10px/1.5 var(--ui);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.achievement-entry-content { max-width: 650px; }
+.achievement-entry-content .achievement-type { margin: 0 0 12px; }
+.achievement-entry-content h3 {
+  margin: 0 0 8px;
+  color: var(--purple);
+  font: 600 clamp(26px, 3.4vw, 42px)/1.12 'Playfair Display', Georgia, serif;
+}
+.achievement-entry-content p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+.achievement-entry-content .achievement-venue {
+  color: var(--ink);
+  font-weight: 700;
+}
+.achievement-entry-index {
+  justify-self: end;
+  color: var(--pink);
+  font: 700 10px/1.4 var(--ui);
+  letter-spacing: .12em;
+}
+.achievement-entry-upcoming .achievement-entry-date > span,
+.achievement-entry-upcoming .achievement-entry-content h3 { color: var(--pink); }
+.achievements-page-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin: clamp(48px, 7vw, 84px) 0 34px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.achievements-page-note p {
+  max-width: 610px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.achievements-back-link {
+  display: inline-block;
+  color: var(--purple);
+  font: 700 10px/1.5 var(--ui);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.achievements-back-link:hover { color: var(--pink); }
+@media (max-width: 600px) {
+  .achievements-main { padding-top: 34px; }
+  .achievement-entry {
+    grid-template-columns: 1fr 30px;
+    gap: 14px;
+  }
+  .achievement-entry-date {
+    grid-column: 1;
+    grid-row: 1;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .achievement-entry-date > span { font-size: 28px; }
+  .achievement-entry-content { grid-column: 1; grid-row: 2; }
+  .achievement-entry-index { grid-column: 2; grid-row: 1 / span 2; }
+  .achievements-page-note { align-items: flex-start; flex-direction: column; }
+}
