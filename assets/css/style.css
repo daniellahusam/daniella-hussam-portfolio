@@ -1797,3 +1797,42 @@ html, body, body * {
 @media (max-width: 600px) {
   .achievement-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 }
+
+
+/* Achievement photographs: horizontal, swipeable carousel in the right column */
+.achievement-entry {
+  grid-template-columns: minmax(130px, .34fr) minmax(260px, .9fr) minmax(280px, 1fr) 32px;
+  column-gap: clamp(18px, 3vw, 44px);
+}
+.achievement-entry-content { max-width: none; }
+.achievement-carousel,
+.achievement-carousel-placeholder { width: 100%; min-width: 0; align-self: center; }
+.achievement-carousel-viewport {
+  width: 100%; overflow: hidden; aspect-ratio: 4 / 3;
+  background: rgba(91, 0, 100, .045); scroll-behavior: smooth; scrollbar-width: none;
+}
+.achievement-carousel-viewport::-webkit-scrollbar { display: none; }
+.achievement-carousel-track { display: flex; width: 100%; height: 100%; }
+.achievement-carousel-slide { display: block; flex: 0 0 100%; width: 100%; height: 100%; overflow: hidden; }
+.achievement-carousel-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.achievement-carousel-controls { display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding-top: 12px; }
+.achievement-carousel-arrow {
+  display: inline-grid; place-items: center; width: 32px; height: 32px;
+  border: 1px solid var(--line); border-radius: 50%; background: transparent;
+  color: var(--purple); cursor: pointer; font: inherit; transition: color .2s, background .2s, border-color .2s;
+}
+.achievement-carousel-arrow:hover { color: white; background: var(--purple); border-color: var(--purple); }
+.achievement-carousel-count { color: var(--muted); font: 700 10px/1 var(--ui); letter-spacing: .12em; }
+.achievement-carousel-count [data-current] { color: var(--purple); }
+.achievement-carousel-placeholder { aspect-ratio: 4 / 3; }
+@media (max-width: 900px) {
+  .achievement-entry { grid-template-columns: minmax(110px, .32fr) minmax(220px, 1fr) minmax(220px, .9fr) 24px; column-gap: 18px; }
+}
+@media (max-width: 650px) {
+  .achievement-entry { grid-template-columns: 1fr 28px; gap: 14px; }
+  .achievement-entry-date { grid-column: 1; grid-row: 1; flex-direction: row; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .achievement-entry-content { grid-column: 1; grid-row: 2; }
+  .achievement-carousel, .achievement-carousel-placeholder { grid-column: 1; grid-row: 3; margin-top: 12px; }
+  .achievement-entry-index { grid-column: 2; grid-row: 1 / span 3; }
+  .achievement-entry-date > span { font-size: 28px; }
+}
