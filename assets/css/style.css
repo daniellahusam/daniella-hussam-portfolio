@@ -1233,3 +1233,52 @@ html, body, body * {
   .projects-main .projects-layout { grid-template-columns: 1fr !important; }
   .projects-main .projects-layout > .projects-gallery { grid-column: 1 !important; grid-row: auto !important; }
 }
+
+
+/* Dark Side editorial finish: final paragraph sits beneath the enlarged image in the right column */
+.projects-main .projects-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr) !important;
+  column-gap: clamp(28px, 4vw, 64px);
+  align-items: start !important;
+}
+.projects-main .projects-layout > .project-statement {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  min-width: 0;
+}
+.projects-main .projects-layout > .projects-right-rail {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  min-width: 0;
+}
+.projects-main .projects-right-rail .projects-gallery {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.projects-main .projects-right-rail .projects-gallery > img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  object-fit: contain !important;
+}
+.projects-main .project-statement .project-final-paragraph,
+.projects-main .projects-right-rail .project-final-paragraph {
+  margin: 24px 0 0;
+  font-size: 19px;
+  line-height: 1.58;
+}
+@media (max-width: 700px) {
+  .projects-main .projects-layout { grid-template-columns: 1fr !important; }
+  .projects-main .projects-layout > .project-statement,
+  .projects-main .projects-layout > .projects-right-rail {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+  .projects-main .projects-right-rail .project-final-paragraph {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+}
