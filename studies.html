@@ -18,7 +18,20 @@ const grid=document.getElementById("artwork-grid");
 const viewer=document.getElementById("zoom-viewer"), stage=document.getElementById("zoom-stage"), zoomImage=document.getElementById("zoom-image"), zoomLevel=document.getElementById("zoom-level");
 let scale=1, x=0, y=0, dragging=false, sx=0, sy=0, px=0, py=0;
 function field(md,key){const m=md.match(new RegExp("^"+key+":\\s*(.*)$","m"));return m?m[1].trim().replace(/^["']|["']$/g,""):"";}
-function description(md){const m=md.match(/^description:\s*(?:[>|-]+\s*)?\n([\s\S]*?)(?=\n(?:image|title|category|year|medium|price):|\n---)/m);return m?m[1].split("\n").map(s=>s.replace(/^\s+/,"")).join(" ").replace(/\s+/g," ").trim():"";}
+function description(md){
+  const match=md.match(/^description:\s*(.*)$/im);
+  if(!match)return "";
+  const first=match[1].trim();
+  if(first && !/^[>|][-+]?$/.test(first))return first.replace(/^["']|["']$/g,"").trim();
+  const lines=md.slice(match.index+match[0].length).replace(/^\r?\n/,"").split(/\r?\n/);
+  const collected=[];
+  for(const line of lines){
+    if(line.trim()===""){collected.push("");continue;}
+    if(!/^\s/.test(line))break;
+    collected.push(line.trim());
+  }
+  return collected.join(" ").replace(/\s+/g," ").trim();
+}
 function parse(md){const d=description(md), link=(md.match(/https:\/\/getmostra\.com\/artwork\/[^\s"'<>]+/)||[])[0]||"";const size=(d.match(/Size:\s*([^\n.]+)/i)||[])[1]||field(md,"size");const price=field(md,"price")||(d.match(/Price:\s*([^\n]+)/i)||[])[1]||"";return {title:field(md,"title"),category:field(md,"category"),year:field(md,"year"),medium:field(md,"medium"),image:field(md,"image"),size:size.trim(),price:price.trim(),description:d,link};}
 function openViewer(item){scale=1;x=0;y=0;zoomImage.src=item.image.startsWith("http")?item.image:"https://daniellahusam.github.io/daniella-hussam-portfolio"+item.image;zoomImage.alt=item.title;update();zoomLevel.textContent="100%";viewer.classList.add("open");document.body.classList.add("viewer-open");}
 function closeViewer(){viewer.classList.remove("open");document.body.classList.remove("viewer-open");}
