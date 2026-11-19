@@ -833,29 +833,6 @@ body { padding-top: 104px; }
 }
 
 
-/* Hand-drawn wiggly dividers: one before Comfort Zone and one before TEDx */
-.comfort-project::before,
-.tedx-project::before {
-  content: "";
-  display: block;
-  grid-column: 1 / -1;
-  width: min(72%, 560px);
-  height: 24px;
-  margin: 0 auto 34px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 560 24'%3E%3Cpath d='M2 13 C18 2 30 23 48 12 S78 3 96 13 S126 22 144 11 S174 3 192 13 S222 22 240 11 S270 3 288 13 S318 22 336 11 S366 3 384 13 S414 22 432 11 S462 3 480 13 S510 22 528 11 S546 7 558 13' fill='none' stroke='%23D94F91' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
-}
-@media (max-width: 700px) {
-  .comfort-project::before,
-  .tedx-project::before {
-    width: 88%;
-    margin-bottom: 24px;
-  }
-}
-
-
 /* Selected Works: compact editorial masonry grid inspired by the supplied reference */
 body[data-category="Selected Works"] .gallery-main {
   width: 100%;
