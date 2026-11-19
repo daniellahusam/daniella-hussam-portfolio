@@ -1348,8 +1348,8 @@ html, body, body * {
   object-fit: fill;
   margin: 0;
   pointer-events: none;
-  animation: none !important;
-  transform: none !important;
+  animation: none;
+  transform: none;
 }
 .hero-artworld .hero-layer { z-index: 1; }
 .hero-accessible-copy {
@@ -1511,6 +1511,86 @@ html, body, body * {
 .hero-artworld .hero-artist-statement {
   opacity: 0;
   animation: heroSoftFade .9s ease-out 2.48s both !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-artworld .hero-layer {
+    opacity: 1 !important;
+    animation: none !important;
+    clip-path: none !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
+
+
+/* Canva video reference: playful name movement, portrait entrance, then a calm hold */
+@keyframes canvaNameWiggle {
+  0%   { opacity: 0; transform: translateY(12px) rotate(-2.2deg) skewX(-2deg); }
+  18%  { opacity: 1; transform: translateY(-3px) rotate(1.8deg) skewX(1.5deg); }
+  34%  { transform: translateY(2px) rotate(-1.3deg) skewX(-1deg); }
+  50%  { transform: translateY(-1px) rotate(.9deg) skewX(.7deg); }
+  68%  { transform: translateY(1px) rotate(-.45deg) skewX(-.3deg); }
+  84%  { transform: translateY(0) rotate(.2deg) skewX(0); }
+  100% { opacity: 1; transform: translateY(0) rotate(0) skewX(0); }
+}
+@keyframes canvaPortraitRise {
+  0%   { opacity: 0; transform: translateY(34px) scale(.985); }
+  65%  { opacity: 1; transform: translateY(-4px) scale(1.006); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes canvaPop {
+  0%   { opacity: 0; transform: scale(.72) rotate(-7deg); }
+  68%  { opacity: 1; transform: scale(1.09) rotate(3deg); }
+  86%  { transform: scale(.97) rotate(-1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes canvaDrawIn {
+  from { opacity: 0; clip-path: inset(100% 0 0 0); }
+  to   { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+@keyframes canvaLineIn {
+  from { opacity: 0; clip-path: inset(0 0 100% 0); }
+  to   { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+@keyframes canvaFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.hero-artworld .hero-portrait-layer {
+  opacity: 0;
+  transform-origin: 50% 90%;
+  animation: canvaPortraitRise 1.05s cubic-bezier(.18,.78,.25,1) .18s both !important;
+}
+.hero-artworld .hero-name-daniella {
+  opacity: 0;
+  transform-origin: 24% 28%;
+  animation: canvaNameWiggle 1.05s cubic-bezier(.2,.75,.25,1) .08s both !important;
+}
+.hero-artworld .hero-name-husam {
+  opacity: 0;
+  transform-origin: 78% 43%;
+  animation: canvaNameWiggle 1.05s cubic-bezier(.2,.75,.25,1) .2s both !important;
+}
+.hero-artworld .hero-pink-doodles {
+  opacity: 0;
+  transform-origin: 73% 22%;
+  animation: canvaPop .68s cubic-bezier(.2,.8,.25,1) .52s both !important;
+}
+.hero-artworld .hero-purple-scribble {
+  opacity: 0;
+  animation: canvaDrawIn 1.05s ease-out .72s both !important;
+}
+.hero-artworld .hero-pink-line {
+  opacity: 0;
+  animation: canvaLineIn .78s ease-out .72s both !important;
+}
+.hero-artworld .hero-tagline {
+  opacity: 0;
+  animation: canvaFade .85s ease-out .62s both !important;
+}
+.hero-artworld .hero-artist-statement {
+  opacity: 0;
+  animation: canvaFade 1.45s ease-out .78s both !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-artworld .hero-layer {
