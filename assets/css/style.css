@@ -999,3 +999,17 @@ body[data-category="Selected Works"] .artwork-details {
   .tedx-project { grid-template-columns: 1fr; gap: 24px; margin-bottom: 44px; }
   .tedx-project > .work-card { max-width: none; }
 }
+
+
+/* Artwork descriptions */
+.artwork-description {
+  margin: 9px 0 0;
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+.project-statement .artwork-description { color: var(--ink); }
+@media (max-width: 600px) {
+  .artwork-description { font-size: 12px; line-height: 1.7; }
+}
