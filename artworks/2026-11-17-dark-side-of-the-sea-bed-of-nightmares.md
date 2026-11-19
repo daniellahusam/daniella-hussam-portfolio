@@ -1,5 +1,5 @@
 ---
-title: Dark side of the sea-bed of nightmares
+title: Bed of nightmares
 category: Installations
 year: "2020"
 medium: wood
