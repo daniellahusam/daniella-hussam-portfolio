@@ -1202,3 +1202,11 @@ body[data-category="Studies"] .chronological-grid .work-card .visual img {
 html, body, body * {
   font-family: 'Lato', sans-serif !important;
 }
+
+
+/* Dark Side feature: give the composite photograph enough room to match the full statement */
+.projects-main { width: min(1600px, calc(100% - 10vw)); margin-inline: auto; }
+.projects-main .projects-layout { width: 100%; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) !important; }
+.projects-main .projects-layout > .projects-gallery { align-self: stretch; min-width: 0; display: flex !important; }
+.projects-main .projects-layout > .projects-gallery > img { display: block; width: 100%; height: 100%; max-width: 100%; object-fit: contain; align-self: stretch; }
+@media (max-width: 700px) { .projects-main { width: calc(100% - 36px); } .projects-main .projects-layout { grid-template-columns: 1fr !important; } .projects-main .projects-layout > .projects-gallery > img { height: auto; } }
