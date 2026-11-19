@@ -1100,3 +1100,9 @@ body[data-category="Selected Works"] .artwork-details {
 @media (max-width: 600px) {
   .chronological-grid { grid-template-columns: 1fr; gap: 30px; }
 }
+
+
+/* Dark Side of the Sea: keep all three photographs in the two-column grid */
+.projects-layout .projects-gallery .work-card:nth-child(3) {
+  grid-column: auto;
+}
