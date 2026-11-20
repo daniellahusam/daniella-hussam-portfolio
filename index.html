@@ -133,6 +133,10 @@
       return ['http:', 'https:'].includes(url.protocol) ? url.href : '';
     } catch { return ''; }
   };
+  const safeLinkUrl = value => {
+    if (typeof value === 'string' && value.startsWith('mailto:')) return value;
+    return safeUrl(value);
+  };
   const make = (tag, className, textValue) => {
     const el = document.createElement(tag);
     if (className) el.className = className;
@@ -211,7 +215,7 @@
       setText('#selected-links-heading', data.selected_links_heading);
       const list = linksSection.querySelector('.selected-links-list');
       data.selected_links.forEach(item => {
-        const href = safeUrl(item.url);
+        const href = safeLinkUrl(item.url);
         if (!href || !item.label) return;
         const link = make('a', 'selected-link-item');
         link.href = href;
