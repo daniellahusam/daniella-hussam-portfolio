@@ -1872,3 +1872,34 @@ html, body, body * {
   .gallery-main > .gallery-intro { margin: 30px auto 6px; padding: 0 18px; }
   .gallery-main > .gallery-intro p { font-size: 10px; }
 }
+
+
+/* Keep gallery descriptions after all artwork, never above the gallery */
+main.gallery-main {
+  display: flex;
+  flex-direction: column;
+}
+main.gallery-main > .card-grid {
+  order: 1;
+  width: 100%;
+}
+main.gallery-main > .gallery-intro {
+  order: 2;
+  display: block;
+  width: 100%;
+  max-width: 860px;
+  margin: 34px auto 12px;
+  padding: 0;
+}
+main.gallery-main > .gallery-intro p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--muted, #77717c);
+  font-size: 11px;
+  line-height: 1.65;
+  letter-spacing: .01em;
+}
+@media (max-width: 700px) {
+  main.gallery-main > .gallery-intro { margin: 26px auto 10px; padding: 0 18px; }
+  main.gallery-main > .gallery-intro p { font-size: 10px; }
+}
