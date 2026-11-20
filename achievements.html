@@ -234,5 +234,14 @@
       }
     })();
   </script>
+<script>
+  // Discourage casual image saving. This cannot prevent screenshots or access to image URLs.
+  document.addEventListener('contextmenu', event => {
+    if (event.target.closest('img')) event.preventDefault();
+  }, true);
+  document.addEventListener('dragstart', event => {
+    if (event.target.closest('img')) event.preventDefault();
+  }, true);
+</script>
 </body>
 </html>
