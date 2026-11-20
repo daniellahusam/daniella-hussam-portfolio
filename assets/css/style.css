@@ -1850,3 +1850,25 @@ html, body, body * {
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+
+/* Descriptive page copy sits quietly after the artwork, not above it */
+.gallery-main > .gallery-intro {
+  order: 2;
+  max-width: 860px;
+  margin: 42px auto 8px;
+  padding: 0;
+}
+.gallery-main > .card-grid { order: 1; }
+.gallery-main > .gallery-intro p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--muted, #77717c);
+  font-size: 11px;
+  line-height: 1.65;
+  letter-spacing: .01em;
+}
+@media (max-width: 700px) {
+  .gallery-main > .gallery-intro { margin: 30px auto 6px; padding: 0 18px; }
+  .gallery-main > .gallery-intro p { font-size: 10px; }
+}
