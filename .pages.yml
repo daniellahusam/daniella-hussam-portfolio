@@ -98,12 +98,11 @@ content:
           - name: photos
             label: Photos (upload up to 10)
             type: image
-            list: false
             options:
               multiple:
                 max: 10
               unique: true
-              extensions: [jpg, jpeg, png, webp, gif]
+              extensions: [jpg, jpeg, png, webp, gif, heic, heif]
               path: assets/images/achievements
           - name: upcoming
             label: Upcoming event
