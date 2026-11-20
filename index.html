@@ -124,10 +124,20 @@
         <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3.5" y="6.5" width="25" height="19" rx="2.5"></rect><path d="M5 9l11 9 11-9"></path></svg>
       </a>
     </div>
+    <p class="copyright-notice">© Daniella Husam. All artwork and images are protected by copyright. Reproduction or commercial use without permission is prohibited.</p>
     <div class="footer-bottom">
       <span>© 2026 Daniella Husam</span>
       <span>Artist · Working internationally<br><a href="mailto:daniellahussam@mail.com">daniellahussam@mail.com</a></span>
     </div>
   </footer>
+<script>
+  // Discourage casual image saving. This cannot prevent screenshots or access to image URLs.
+  document.addEventListener('contextmenu', event => {
+    if (event.target.closest('img')) event.preventDefault();
+  }, true);
+  document.addEventListener('dragstart', event => {
+    if (event.target.closest('img')) event.preventDefault();
+  }, true);
+</script>
 </body>
 </html>
