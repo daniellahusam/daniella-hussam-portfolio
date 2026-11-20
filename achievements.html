@@ -165,6 +165,9 @@
       const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
       }[char]));
+      const formatDescription = value => escapeHTML(value)
+        .replace(/(https?:\/\/[^\s<]+)/g, url => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`)
+        .replace(/\r?\n/g, '<br>');
       try {
         const response = await fetch('content/achievements.json', { cache: 'no-store' });
         if (!response.ok) throw new Error('Could not load achievements content');
@@ -181,7 +184,7 @@
                 <span class="achievement-type">${escapeHTML(entry.type)}</span>
                 <h3>${escapeHTML(entry.title)}</h3>
                 <p class="achievement-venue">${escapeHTML(entry.venue)}</p>
-                <p>${escapeHTML(entry.description)}</p>
+                <p>${formatDescription(entry.description)}</p>
               </div>
               ${Array.isArray(entry.photos) && entry.photos.length ? `
                 <div class="achievement-carousel" data-carousel aria-label="Photographs for ${escapeHTML(entry.title)}">
