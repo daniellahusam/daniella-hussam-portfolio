@@ -1806,9 +1806,9 @@ html, body, body * {
 }
 .achievement-entry-content { max-width: none; }
 .achievement-carousel,
-.achievement-carousel-placeholder { width: 100%; min-width: 0; align-self: center; }
+.achievement-carousel-placeholder { width: 100%; min-width: 0; align-self: start; }
 .achievement-carousel-viewport {
-  width: 100%; overflow: hidden; aspect-ratio: 4 / 3;
+  width: 100%; overflow: hidden; aspect-ratio: 3 / 4;
   background: rgba(91, 0, 100, .045); scroll-behavior: smooth; scrollbar-width: none;
 }
 .achievement-carousel-viewport::-webkit-scrollbar { display: none; }
