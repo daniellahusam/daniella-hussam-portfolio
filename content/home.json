@@ -31,11 +31,6 @@
   "selected_links_heading": "Explore further",
   "selected_links": [
     {
-      "label": "Mostra",
-      "description": "Discover and collect selected works",
-      "url": "https://getmostra.com/artist/daniellahussam"
-    },
-    {
       "label": "Selected Works",
       "description": "Explore the portfolio",
       "url": "https://daniellartem.com/selected-works.html"
@@ -44,6 +39,11 @@
       "label": "Instagram",
       "description": "Follow the studio",
       "url": "https://www.instagram.com/daniellartem/"
+    },
+    {
+      "label": "Have a project in mind?",
+      "description": "Commissions and enquiries are welcome. Get in touch.",
+      "url": "mailto:daniellahussam@mail.com"
     }
   ],
   "mostra_eyebrow": "Collect · Discover · Own",
