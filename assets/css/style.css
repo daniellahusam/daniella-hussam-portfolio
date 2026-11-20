@@ -1908,22 +1908,15 @@ main.gallery-main > .gallery-intro p {
 /* Copyright notice and light-touch image-saving deterrents */
 .copyright-notice {
   flex: 1 1 auto;
+  min-width: 0;
   max-width: none;
   margin: 0;
-  padding: 0 12px;
+  padding: 0 8px;
   color: var(--muted);
-  font: 400 8px/1.5 var(--ui);
-  letter-spacing: .015em;
+  font: 400 clamp(5px, .55vw, 8px)/1.2 var(--ui);
+  letter-spacing: .005em;
   text-align: center;
   white-space: nowrap;
-}
-@media (max-width: 900px) {
-  .copyright-notice {
-    flex-basis: 100%;
-    order: 2;
-    white-space: normal;
-    font-size: 8px;
-  }
 }
 .site-footer img,
 .work-card img,
