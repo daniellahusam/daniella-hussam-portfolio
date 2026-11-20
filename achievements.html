@@ -46,11 +46,7 @@
   </header>
 
   <main class="achievements-main">
-<section class="achievements-year" aria-labelledby="achievements-year">
-      <div class="achievements-year-heading">
-        <span class="eyebrow">Selected milestones</span>
-        <h2 id="achievements-year">2026</h2>
-      </div>
+<section class="achievements-year" aria-label="Selected milestones">
       <div class="achievements-timeline" id="achievements-timeline" aria-live="polite">
         <article class="achievement-entry">
           <div class="achievement-entry-date"><span>20</span><time datetime="2026-03-20">March 2026</time></div>
@@ -160,7 +156,6 @@
       stage.addEventListener('pointerup', stopDragging);
       stage.addEventListener('pointercancel', stopDragging);
       const timeline = document.getElementById('achievements-timeline');
-      const yearHeading = document.getElementById('achievements-year');
       const closingNote = document.getElementById('achievements-closing-note');
       const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -172,9 +167,19 @@
         const response = await fetch('content/achievements.json', { cache: 'no-store' });
         if (!response.ok) throw new Error('Could not load achievements content');
         const data = await response.json();
-        if (data.year) yearHeading.textContent = data.year;
         if (Array.isArray(data.entries)) {
-          timeline.innerHTML = data.entries.map((entry, index) => `
+          const datedEntries = data.entries.map((entry, originalIndex) => {
+            const dateValue = String(entry.date || '');
+            const parsedDate = /^\\d{4}-\\d{2}(?:-\\d{2})?$/.test(dateValue) ? new Date(dateValue.length === 7 ? dateValue + '-01T00:00:00' : dateValue + 'T00:00:00') : null;
+            const year = parsedDate && !Number.isNaN(parsedDate.getTime()) ? String(parsedDate.getFullYear()) : (dateValue.match(/\\b(19|20)\\d{2}\\b/) || [])[0] || 'Undated';
+            const sortValue = parsedDate && !Number.isNaN(parsedDate.getTime()) ? parsedDate.getTime() : 0;
+            return { entry, originalIndex, year, sortValue };
+          }).sort((a, b) => b.sortValue - a.sortValue || a.originalIndex - b.originalIndex);
+          let previousYear = null;
+          timeline.innerHTML = datedEntries.map(({ entry, originalIndex, year }, index) => {
+            const yearHeader = year !== previousYear ? `<div class="achievements-year-heading"><span class="eyebrow">Selected milestones</span><h2>${escapeHTML(year)}</h2></div>` : '';
+            previousYear = year;
+            return yearHeader + `
             <article class="achievement-entry ${entry.upcoming ? 'achievement-entry-upcoming' : ''}">
               <div class="achievement-entry-date">
                 <span>${escapeHTML(entry.day_label)}</span>
@@ -201,7 +206,8 @@
                 </div>` : '<div class="achievement-carousel-placeholder" aria-hidden="true"></div>'}
               <span class="achievement-entry-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
             </article>
-          `).join('');
+          `;
+          }).join('');
         }
         if (data.closing_note) closingNote.textContent = data.closing_note;
         document.querySelectorAll('.achievement-carousel-slide').forEach(slide => {
