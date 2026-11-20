@@ -6,7 +6,7 @@
       "date_label": "March 2026",
       "date": "2026-03-20",
       "type": "Exhibition",
-      "title": "New York",
+      "title": "New York, USA",
       "venue": "The Holy Art Gallery",
       "description": "2 pieces exhibited in NYC \n\n1. Wanderlust 80x100x4 cm, Acrylic on canvas, 2024\nA one-of-a-kind contemporary surrealist portrait exploring identity, curiosity, and the beauty of imagined worlds. Bold shades of crimson, magenta, violet, and warm gold unfold across a dreamlike landscape of oversized mushrooms and whimsical forms, inviting the viewer into a world that feels both familiar and otherworldly.\nThe central figure stands poised between fantasy and reality, embodying a sense of quiet confidence amidst the surrounding visual chaos. Through playful imagery and expressive colour, the work reflects the desire to explore beyond familiar boundaries, embrace individuality, and discover new versions of oneself. It is a celebration of curiosity, resilience, and the courage to wander beyond expectation.\n-A one-of-a-kind original painting exploring feminine escape, softness, and the longing to wander.-\n\n2. Reverie In Red Poppies, 25x25 cm, oil pencil colours & markers on paper, 2025\nThis one was more introspective and emotional. We described the figure as a pulse, crowned with red poppies representing memory, healing and the gentle messiness of becoming.\nThe earlier wording began:\n“Reverie in Red Poppies” looks inward, into that quiet space where feelings and imagination mix.",
       "preview_position": "50% 20%",
@@ -40,8 +40,8 @@
       "date_label": "December 2026",
       "date": "2026-12-04",
       "type": "Upcoming exhibition",
-      "title": "Madrid",
-      "venue": "Spain",
+      "title": "Arrival Gallery",
+      "venue": "Spain, Spain",
       "description": "Upcoming exhibition presentation in Madrid.\n\nA Study In Presence, 30x40x2 cm, Mixed Media on Canvas, 2021\nThis painting began with a photograph by Rudi Huisman. Something about the woman's presence, her posture and her quiet expression resonated with me. I found myself drawn to the stillness of the moment and felt compelled to translate that feeling into my own visual language.\n\nRather than simply recreating the photograph, I approached it as a starting point for interpretation. Through colour, texture, expressive brushwork and shifts in tone, I began to move away from the original image and towards something more personal.\n\nThe process became less about capturing the photograph and more about exploring what I saw and felt within it. Somewhere between the original image and my interpretation, the painting began to develop a presence of its own, finding an identity beyond its photographic reference.",
       "photos": [
         "/assets/images/achievements/2cda34d5-ec6f-4025-8ae5-f36015542d0c.jpeg",
@@ -68,6 +68,23 @@
         "/assets/images/achievements/img7610.png",
         "/assets/images/achievements/1fbeed0d-b492-4d49-9e1c-efbf2583a059.jpeg",
         "/assets/images/achievements/f9cbb137-a9c3-49e2-9d36-7eea43cc65a6.jpg"
+      ],
+      "upcoming": false
+    },
+    {
+      "day_label": "10",
+      "date_label": "March 2023",
+      "date": "2023-03-10",
+      "type": "Exhibition",
+      "title": "Amman, Jordan",
+      "venue": "Women Without Shame-Outique Gallery",
+      "description": "To honour women's day, a group exhibition was held in Outique gallery - Lweibdeh, Amman, Jordan. \n2 pieces were presented in the exhibition.\n\n1. Blooming, 35x35x5 cm, Mixed Media on Canvas, 2022\nThis work confronts the tension between control and release, where the body becomes both\na surface and a battleground. The lower half clings tightly, almost resisting itself, while the\nupper form dissolves into textured made out of clay, sealed with resin, ocean-like matter. It suggests a shift from restriction to\nfluidity, from containment to surrender.\nThe piece reflects the internal struggle many women face with body image, where discipline\ncan slowly turn into conflict, and care becomes entangled with pressure. The pursuit of a\n“perfect” form often distances the self from the body, creating a quiet fracture that is not\nalways visible, but deeply felt.\nThe textured upper half introduces another language. It moves away from rigidity and\ntoward something more organic, more forgiving. It echoes the growing space where\nacceptance begins to take shape, influenced by voices that challenge imposed ideals and\nreclaim the body as something lived in, not controlled.\nThis work exists between those two states. It does not resolve the tension, but holds it. It\nspeaks to the ongoing process of unlearning, of rebuilding a relationship with the body that\nis rooted not in perfection, but in presence.\n\n2. Girl With Red Veil, 20x25 cm, Acrylic on paper, 2022\nWhat does it mean to be beautiful?  \nIn our society women are expected to fit with the constantly changing \nbeauty standards that have been set for them. Clear, fair skin tone, \ncertain hair colour and eye colour, veil or no veil in hopes of controlling \nwomen’s body; molding women to erase their identity to fit the beauty \nstandards. Different is beautiful.",
+      "photos": [
+        "/assets/images/achievements/6c444875-fb55-4f7e-b50e-d7209b0a1603.jpeg",
+        "/assets/images/achievements/img7610-1.png",
+        "/assets/images/achievements/img7608.png",
+        "/assets/images/achievements/j.png",
+        "/assets/images/achievements/whatsapp-image-2024-05-04-at-80411-pm.jpeg"
       ],
       "upcoming": false
     }
