@@ -6,8 +6,8 @@
       "date_label": "March 2026",
       "date": "2026-03-20",
       "type": "Exhibition",
-      "title": "New York, USA",
-      "venue": "The Holy Art Gallery",
+      "title": "The Holy Art Gallery",
+      "venue": "New York, USA",
       "description": "2 pieces exhibited in NYC \n\n1. Wanderlust 80x100x4 cm, Acrylic on canvas, 2024\nA one-of-a-kind contemporary surrealist portrait exploring identity, curiosity, and the beauty of imagined worlds. Bold shades of crimson, magenta, violet, and warm gold unfold across a dreamlike landscape of oversized mushrooms and whimsical forms, inviting the viewer into a world that feels both familiar and otherworldly.\nThe central figure stands poised between fantasy and reality, embodying a sense of quiet confidence amidst the surrounding visual chaos. Through playful imagery and expressive colour, the work reflects the desire to explore beyond familiar boundaries, embrace individuality, and discover new versions of oneself. It is a celebration of curiosity, resilience, and the courage to wander beyond expectation.\n-A one-of-a-kind original painting exploring feminine escape, softness, and the longing to wander.-\n\n2. Reverie In Red Poppies, 25x25 cm, oil pencil colours & markers on paper, 2025\nThis one was more introspective and emotional. We described the figure as a pulse, crowned with red poppies representing memory, healing and the gentle messiness of becoming.\nThe earlier wording began:\n“Reverie in Red Poppies” looks inward, into that quiet space where feelings and imagination mix.",
       "preview_position": "50% 20%",
       "photos": [
@@ -54,9 +54,9 @@
       "day_label": "21",
       "date_label": "August 2024",
       "date": "2024-08-21",
-      "type": "Echibition",
-      "title": "Amman, Jordan",
-      "venue": "Group Art Showcase-Language City Cafe",
+      "type": "Exhibition",
+      "title": "Group Art Showcase-Language City Cafe",
+      "venue": "Amman, Jordan",
       "description": "Exhibited six artworks as part of a collaborative group exhibition. \n\n1. Wanderlust 80x100x4 cm, Acrylic on canvas, 2024\n2. A Study In Presence, 30x40x2 cm, Mixed Media on Canvas, 2021\n3. Golden Hour, 26x52x4 cm, Mixed Media on Canvas, 2021\n4. Frog In A Teacup, 20x30 cm, Watercolour & Markers on paper, 2020\n5. Gemini, 15x21 cm, Markers on paper, 2019\n6. Girl With Red Veil, 20x25 cm, Acrylic on paper, 2022\n",
       "photos": [
         "/assets/images/achievements/6c9811df-c5d3-4058-a013-1ee1475aef8a.jpeg",
@@ -76,8 +76,8 @@
       "date_label": "March 2023",
       "date": "2023-03-10",
       "type": "Exhibition",
-      "title": "Amman, Jordan",
-      "venue": "Women Without Shame-Outique Gallery",
+      "title": "Women Without Shame-Outique Gallery",
+      "venue": "Amman, Jordan",
       "description": "To honour women's day, a group exhibition was held in Outique gallery - Lweibdeh, Amman, Jordan. \n2 pieces were presented in the exhibition.\n\n1. Blooming, 35x35x5 cm, Mixed Media on Canvas, 2022\nThis work confronts the tension between control and release, where the body becomes both\na surface and a battleground. The lower half clings tightly, almost resisting itself, while the\nupper form dissolves into textured made out of clay, sealed with resin, ocean-like matter. It suggests a shift from restriction to\nfluidity, from containment to surrender.\nThe piece reflects the internal struggle many women face with body image, where discipline\ncan slowly turn into conflict, and care becomes entangled with pressure. The pursuit of a\n“perfect” form often distances the self from the body, creating a quiet fracture that is not\nalways visible, but deeply felt.\nThe textured upper half introduces another language. It moves away from rigidity and\ntoward something more organic, more forgiving. It echoes the growing space where\nacceptance begins to take shape, influenced by voices that challenge imposed ideals and\nreclaim the body as something lived in, not controlled.\nThis work exists between those two states. It does not resolve the tension, but holds it. It\nspeaks to the ongoing process of unlearning, of rebuilding a relationship with the body that\nis rooted not in perfection, but in presence.\n\n2. Girl With Red Veil, 20x25 cm, Acrylic on paper, 2022\nWhat does it mean to be beautiful?  \nIn our society women are expected to fit with the constantly changing \nbeauty standards that have been set for them. Clear, fair skin tone, \ncertain hair colour and eye colour, veil or no veil in hopes of controlling \nwomen’s body; molding women to erase their identity to fit the beauty \nstandards. Different is beautiful.",
       "photos": [
         "/assets/images/achievements/6c444875-fb55-4f7e-b50e-d7209b0a1603.jpeg",
@@ -86,6 +86,9 @@
         "/assets/images/achievements/j.png",
         "/assets/images/achievements/whatsapp-image-2024-05-04-at-80411-pm.jpeg"
       ],
+      "upcoming": false
+    },
+    {
       "upcoming": false
     }
   ],
