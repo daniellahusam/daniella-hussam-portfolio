@@ -81,6 +81,20 @@ content:
           - name: description
             label: Short description
             type: text
+          - name: preview_position
+            label: Photo preview placement (all photos in this entry)
+            type: select
+            options:
+              values:
+                - 50% 50%
+                - 50% 20%
+                - 50% 80%
+                - 20% 50%
+                - 80% 50%
+                - 25% 25%
+                - 75% 25%
+                - 25% 75%
+                - 75% 75%
           - name: photos
             label: Photos (upload up to 10)
             type: image
