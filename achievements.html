@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lato:wght@400;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <link href="assets/css/style.css?v=20261120-hidden-headings" rel="stylesheet">
+  <link href="assets/css/style.css?v=20261120-achievement-zoom" rel="stylesheet">
 </head>
 <body>
   <header class="site-header">
@@ -94,8 +94,71 @@
       <span>Artist · Working internationally<br><a href="mailto:daniellahussam@mail.com">daniellahussam@mail.com</a></span>
     </div>
   </footer>
+<div class="zoom-viewer" id="zoom-viewer" role="dialog" aria-modal="true" aria-label="Achievement photograph viewer">
+  <button class="zoom-close" id="zoom-close" aria-label="Close viewer">&times;</button>
+  <div class="zoom-toolbar">
+    <button id="zoom-out" aria-label="Zoom out">−</button>
+    <span class="zoom-level" id="zoom-level">100%</span>
+    <button id="zoom-in" aria-label="Zoom in">+</button>
+    <button id="zoom-reset" aria-label="Reset zoom">↺</button>
+  </div>
+  <div class="zoom-stage" id="zoom-stage"><img id="zoom-image" src="" alt=""></div>
+  <div class="zoom-hint">DRAG TO MOVE · SCROLL OR USE + / − TO ZOOM</div>
+</div>
   <script>
     (async function () {
+      const viewer = document.getElementById('zoom-viewer');
+      const stage = document.getElementById('zoom-stage');
+      const zoomImage = document.getElementById('zoom-image');
+      const zoomLevel = document.getElementById('zoom-level');
+      let scale = 1, x = 0, y = 0, dragging = false, sx = 0, sy = 0, px = 0, py = 0;
+      function updateZoom() {
+        zoomImage.style.transform = `translate(${x}px,${y}px) scale(${scale})`;
+        zoomLevel.textContent = Math.round(scale * 100) + '%';
+      }
+      function zoomBy(amount) {
+        scale = Math.max(1, Math.min(5, scale + amount));
+        if (scale === 1) { x = 0; y = 0; }
+        updateZoom();
+      }
+      function openZoom(src, alt) {
+        scale = 1; x = 0; y = 0;
+        zoomImage.src = src; zoomImage.alt = alt || 'Achievement photograph';
+        updateZoom();
+        viewer.classList.add('open');
+        document.body.classList.add('viewer-open');
+      }
+      function closeZoom() {
+        viewer.classList.remove('open');
+        document.body.classList.remove('viewer-open');
+      }
+      document.getElementById('zoom-close').addEventListener('click', closeZoom);
+      document.getElementById('zoom-in').addEventListener('click', () => zoomBy(.25));
+      document.getElementById('zoom-out').addEventListener('click', () => zoomBy(-.25));
+      document.getElementById('zoom-reset').addEventListener('click', () => { scale = 1; x = 0; y = 0; updateZoom(); });
+      viewer.addEventListener('click', event => { if (event.target === viewer) closeZoom(); });
+      document.addEventListener('keydown', event => {
+        if (!viewer.classList.contains('open')) return;
+        if (event.key === 'Escape') closeZoom();
+        if (event.key === '+' || event.key === '=') zoomBy(.25);
+        if (event.key === '-') zoomBy(-.25);
+      });
+      stage.addEventListener('wheel', event => {
+        event.preventDefault();
+        zoomBy(event.deltaY < 0 ? .15 : -.15);
+      }, { passive: false });
+      stage.addEventListener('pointerdown', event => {
+        if (scale <= 1) return;
+        dragging = true; sx = event.clientX; sy = event.clientY; px = x; py = y;
+        stage.classList.add('dragging'); stage.setPointerCapture(event.pointerId);
+      });
+      stage.addEventListener('pointermove', event => {
+        if (!dragging) return;
+        x = px + event.clientX - sx; y = py + event.clientY - sy; updateZoom();
+      });
+      const stopDragging = () => { dragging = false; stage.classList.remove('dragging'); };
+      stage.addEventListener('pointerup', stopDragging);
+      stage.addEventListener('pointercancel', stopDragging);
       const timeline = document.getElementById('achievements-timeline');
       const yearHeading = document.getElementById('achievements-year');
       const closingNote = document.getElementById('achievements-closing-note');
@@ -138,6 +201,13 @@
           `).join('');
         }
         if (data.closing_note) closingNote.textContent = data.closing_note;
+        document.querySelectorAll('.achievement-carousel-slide').forEach(slide => {
+          slide.addEventListener('click', event => {
+            event.preventDefault();
+            const image = slide.querySelector('img');
+            openZoom(image.currentSrc || image.src, image.alt);
+          });
+        });
         document.querySelectorAll('[data-carousel]').forEach(carousel => {
           const viewport = carousel.querySelector('.achievement-carousel-viewport');
           const slides = Array.from(carousel.querySelectorAll('.achievement-carousel-slide'));
