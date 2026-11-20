@@ -36,13 +36,18 @@
       "upcoming": false
     },
     {
-      "day_label": "30",
-      "date_label": "November 2026",
-      "date": "2026-11-30",
+      "day_label": "4",
+      "date_label": "December 2026",
+      "date": "2026-12-04",
       "type": "Upcoming exhibition",
       "title": "Madrid",
       "venue": "Spain",
-      "description": "Upcoming exhibition presentation in Madrid.",
+      "description": "Upcoming exhibition presentation in Madrid.\n\nA study in presence, 30x40x2 cm, 2021\nThis painting began with a photograph by Rudi Huisman. Something about the woman's presence, her posture and her quiet expression resonated with me. I found myself drawn to the stillness of the moment and felt compelled to translate that feeling into my own visual language.\n\nRather than simply recreating the photograph, I approached it as a starting point for interpretation. Through colour, texture, expressive brushwork and shifts in tone, I began to move away from the original image and towards something more personal.\n\nThe process became less about capturing the photograph and more about exploring what I saw and felt within it. Somewhere between the original image and my interpretation, the painting began to develop a presence of its own, finding an identity beyond its photographic reference.",
+      "photos": [
+        "/assets/images/achievements/2cda34d5-ec6f-4025-8ae5-f36015542d0c.jpeg",
+        "/assets/images/achievements/561af25e-6869-4c77-9be2-968d5aded691.jpeg",
+        "/assets/images/achievements/d8b1a4cc-9b46-4ab8-bed1-e9a5a0cb7174.jpeg"
+      ],
       "upcoming": true
     },
     {
