@@ -89,6 +89,22 @@
       "upcoming": false
     },
     {
+      "day_label": "14",
+      "date_label": "June 2021 ",
+      "date": "2021-06-14",
+      "type": "Exhibition",
+      "title": "Dar Art Fair",
+      "venue": "Swefieh, Amman, Jordan",
+      "description": "Participated in one of Amman’s largest art fairs, exhibiting sculptures from prior projects. \nExhibited \"The Dark Side Of The Sea\" project.\n",
+      "photos": [
+        "/assets/images/achievements/b81aa932-e727-435a-be7d-585ab38f8902.jpg",
+        "/assets/images/achievements/img22071.jpg",
+        "/assets/images/achievements/1bbaf263-764a-4e38-b1c0-3a8d9aa3035b.jpg",
+        "/assets/images/achievements/8b40cd52-57b6-47a3-af88-86c8cec79979.jpg",
+        "/assets/images/achievements/9f1949c0-cd62-438d-8d76-38f2928f4b5f.jpg",
+        "/assets/images/achievements/52318af5-d692-47dd-959a-a93a8ebb322d.jpg",
+        "/assets/images/achievements/ebd90cef-e55f-410d-b76e-287a80896820.jpg"
+      ],
       "upcoming": false
     }
   ],
