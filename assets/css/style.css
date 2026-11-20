@@ -1907,13 +1907,23 @@ main.gallery-main > .gallery-intro p {
 
 /* Copyright notice and light-touch image-saving deterrents */
 .copyright-notice {
-  max-width: 760px;
-  margin: 0 auto 18px;
-  padding: 0 22px;
+  flex: 1 1 auto;
+  max-width: none;
+  margin: 0;
+  padding: 0 12px;
   color: var(--muted);
-  font: 400 10px/1.7 var(--ui);
+  font: 400 8px/1.5 var(--ui);
   letter-spacing: .015em;
   text-align: center;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .copyright-notice {
+    flex-basis: 100%;
+    order: 2;
+    white-space: normal;
+    font-size: 8px;
+  }
 }
 .site-footer img,
 .work-card img,
