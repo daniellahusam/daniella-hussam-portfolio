@@ -118,27 +118,108 @@ content:
     path: content/home.json
     format: json
     fields:
-      - name: introduction
-        label: Homepage introduction
-        type: text
-      - name: featured_image
-        label: Featured artwork photograph
-        type: image
-      - name: featured_alt
-        label: Featured artwork description
+      - name: achievements_eyebrow
+        label: Announcements eyebrow
         type: string
-      - name: portfolio_heading
-        label: Portfolio heading
+      - name: achievements_heading
+        label: Announcements heading
         type: string
-      - name: portfolio_description
-        label: Portfolio description
+      - name: achievements_description
+        label: Announcements introduction
         type: text
-      - name: selected_works_image
-        label: Selected Works photograph
-        type: image
-      - name: studies_image
-        label: Studies photograph
-        type: image
-      - name: ceramics_image
-        label: Ceramics photograph
-        type: image
+      - name: announcements
+        label: Announcements and milestones
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title} · {type}"
+        fields:
+          - name: type
+            label: Category / label
+            type: string
+          - name: title
+            label: Heading
+            type: string
+          - name: detail
+            label: Supporting text
+            type: string
+          - name: date_label
+            label: Date shown
+            type: string
+          - name: date
+            label: Date value (YYYY-MM-DD, optional)
+            type: string
+          - name: link_label
+            label: Link text (optional)
+            type: string
+          - name: link_url
+            label: Link URL (optional)
+            type: string
+      - name: featured_heading
+        label: Featured work heading
+        type: string
+      - name: featured_description
+        label: Featured work introduction
+        type: text
+      - name: featured_work
+        label: Featured artworks
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Artwork title
+            type: string
+          - name: medium
+            label: Medium / year
+            type: string
+          - name: description
+            label: Short description
+            type: text
+          - name: image
+            label: Artwork image
+            type: image
+          - name: link_label
+            label: Link text
+            type: string
+          - name: link_url
+            label: Artwork or gallery URL
+            type: string
+      - name: selected_links_heading
+        label: Selected links heading
+        type: string
+      - name: selected_links
+        label: Selected links
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            label: Link title
+            type: string
+          - name: description
+            label: Short description
+            type: string
+          - name: url
+            label: Destination URL
+            type: string
+      - name: mostra_eyebrow
+        label: Mostra section eyebrow
+        type: string
+      - name: mostra_heading
+        label: Mostra heading
+        type: string
+      - name: mostra_description
+        label: Mostra description
+        type: text
+      - name: mostra_button_label
+        label: Mostra button text
+        type: string
+      - name: mostra_url
+        label: Mostra profile URL
+        type: string
