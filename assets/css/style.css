@@ -1805,11 +1805,15 @@ html, body, body * {
   column-gap: clamp(18px, 3vw, 44px);
 }
 .achievement-entry-content { max-width: none; }
-.achievement-carousel,
-.achievement-carousel-placeholder { width: 100%; min-width: 0; align-self: start; }
-.achievement-carousel-viewport {
-  width: 100%; overflow: hidden; aspect-ratio: 3 / 4;
-  background: rgba(91, 0, 100, .045); scroll-behavior: smooth; scrollbar-width: none;
+.achievement-entry > .achievement-carousel,
+.achievement-entry > .achievement-carousel-placeholder {
+  width: 100%; min-width: 0; align-self: start !important; justify-self: stretch;
+  margin-top: 0 !important; padding-top: 0 !important;
+}
+.achievement-entry > .achievement-carousel .achievement-carousel-viewport {
+  width: 100%; height: auto !important; aspect-ratio: 3 / 4 !important;
+  overflow: hidden; background: rgba(91, 0, 100, .045);
+  scroll-behavior: smooth; scrollbar-width: none;
 }
 .achievement-carousel-viewport::-webkit-scrollbar { display: none; }
 .achievement-carousel-track { display: flex; width: 100%; height: 100%; }
