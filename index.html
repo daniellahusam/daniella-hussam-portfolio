@@ -73,43 +73,38 @@
       <img class="hero-layer hero-artist-statement" src="assets/images/9.png" alt="" aria-hidden="true">
     </section>
 
+    <section class="featured-work-section" id="featured-work" hidden aria-labelledby="featured-work-heading">
+      <div class="featured-work-intro">
+        <span class="eyebrow">In the studio</span>
+        <h2 id="featured-work-heading">Featured work</h2>
+        <p class="featured-work-description"></p>
+      </div>
+      <div class="featured-work-grid"></div>
+    </section>
+
     <section class="achievements-preview" aria-labelledby="achievements-heading">
       <div class="achievements-heading">
-        <span class="eyebrow">A few milestones</span>
+        <span class="eyebrow" id="announcements-eyebrow">A few milestones</span>
         <h2 id="achievements-heading">Outside the studio.</h2>
-        <p>Exhibitions, features and moments that have taken the work beyond the canvas.</p>
+        <p id="announcements-description">Exhibitions, features and moments that have taken the work beyond the canvas.</p>
         <a class="text-link-button achievements-see-more" href="achievements.html">See more <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="achievement-list">
-        <article class="achievement-item">
-          <span class="achievement-type">Exhibition</span>
-          <h3>New York</h3>
-          <p>Holy Art Gallery</p>
-          <time datetime="2026-03">March 2026</time>
-        </article>
-        <article class="achievement-item">
-          <span class="achievement-type">Publication</span>
-          <h3>Visual Art Journal</h3>
-          <p>Artist feature</p>
-          <time datetime="2026-04">April 2026</time>
-        </article>
-        <article class="achievement-item">
-          <span class="achievement-type">Upcoming exhibition</span>
-          <h3>Madrid</h3>
-          <p>Spain</p>
-          <time datetime="2026-11-30">30 November 2026</time>
-        </article>
-      </div>
+      <div class="achievement-list" id="homepage-announcements"></div>
+    </section>
+
+    <section class="selected-links-section" hidden aria-labelledby="selected-links-heading">
+      <h2 id="selected-links-heading">Explore further</h2>
+      <div class="selected-links-list"></div>
     </section>
 
     <section class="mostra-section" id="collect">
       <div class="mostra-copy">
-        <div class="eyebrow">Collect · Discover · Own</div>
-        <h2>Find a piece that<br>speaks to you.</h2>
-        <p>Explore my work on Mostra. Discover original artworks and selected digital prints, and choose the pieces that resonate with you.</p>
-        <a class="mostra-button" href="https://getmostra.com/artist/daniellahussam" target="_blank" rel="noopener noreferrer">Discover &amp; Collect</a>
+        <div class="eyebrow" id="mostra-eyebrow">Collect · Discover · Own</div>
+        <h2 id="mostra-heading">Find a piece that<br>speaks to you.</h2>
+        <p id="mostra-description">Explore my work on Mostra. Discover original artworks and selected digital prints, and choose the pieces that resonate with you.</p>
+        <a class="mostra-button" id="mostra-button" href="https://getmostra.com/artist/daniellahussam" target="_blank" rel="noopener noreferrer">Discover &amp; Collect</a>
       </div>
-      <a class="mostra-art-link" href="https://getmostra.com/artist/daniellahussam" target="_blank" rel="noopener noreferrer" aria-label="Discover and collect artwork on Mostra">
+      <a class="mostra-art-link" id="mostra-art-link" href="https://getmostra.com/artist/daniellahussam" target="_blank" rel="noopener noreferrer" aria-label="Discover and collect artwork on Mostra">
         <img class="mostra-large-logo" src="assets/images/mostra-logo.png" alt="Mostra">
       </a>
     </section>
@@ -130,6 +125,119 @@
       <span>Artist · Working internationally<br><a href="mailto:daniellahussam@mail.com">daniellahussam@mail.com</a></span>
     </div>
   </footer>
+<script>
+(async function loadHomepageContent() {
+  const safeUrl = value => {
+    try {
+      const url = new URL(value, window.location.href);
+      return ['http:', 'https:'].includes(url.protocol) ? url.href : '';
+    } catch { return ''; }
+  };
+  const make = (tag, className, textValue) => {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (textValue != null) el.textContent = textValue;
+    return el;
+  };
+  try {
+    const response = await fetch('content/home.json', { cache: 'no-store' });
+    if (!response.ok) return;
+    const data = await response.json();
+
+    const setText = (selector, value) => {
+      if (typeof value === 'string' && value.trim()) document.querySelector(selector).textContent = value;
+    };
+    setText('#announcements-eyebrow', data.achievements_eyebrow);
+    setText('#achievements-heading', data.achievements_heading);
+    setText('#announcements-description', data.achievements_description);
+
+    const announcements = document.getElementById('homepage-announcements');
+    if (announcements && Array.isArray(data.announcements)) {
+      announcements.replaceChildren();
+      data.announcements.slice(0, 3).forEach(item => {
+        const article = make('article', 'achievement-item');
+        article.append(make('span', 'achievement-type', item.type || 'Announcement'));
+        article.append(make('h3', '', item.title || ''));
+        if (item.detail) article.append(make('p', '', item.detail));
+        if (item.date_label) {
+          const time = make('time', '', item.date_label);
+          if (item.date) time.dateTime = item.date;
+          article.append(time);
+        }
+        const href = safeUrl(item.link_url);
+        if (href && item.link_label) {
+          const link = make('a', 'text-link-button', item.link_label);
+          link.href = href;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          article.append(link);
+        }
+        announcements.append(article);
+      });
+    }
+
+    const featured = document.querySelector('.featured-work-section');
+    if (featured && Array.isArray(data.featured_work) && data.featured_work.length) {
+      setText('#featured-work-heading', data.featured_heading);
+      setText('.featured-work-description', data.featured_description);
+      const grid = featured.querySelector('.featured-work-grid');
+      data.featured_work.slice(0, 3).forEach(item => {
+        const card = make('article', 'featured-work-card');
+        const imageUrl = safeUrl(item.image);
+        if (imageUrl) {
+          const image = document.createElement('img');
+          image.src = imageUrl;
+          image.alt = item.title || 'Featured artwork';
+          image.loading = 'lazy';
+          card.append(image);
+        }
+        const title = make('h3', '', item.title || '');
+        card.append(title);
+        if (item.medium) card.append(make('p', 'featured-work-medium', item.medium));
+        if (item.description) card.append(make('p', '', item.description));
+        const href = safeUrl(item.link_url);
+        if (href && item.link_label) {
+          const link = make('a', 'text-link-button', item.link_label);
+          link.href = href;
+          card.append(link);
+        }
+        grid.append(card);
+      });
+      featured.hidden = grid.children.length === 0;
+    }
+
+    const linksSection = document.querySelector('.selected-links-section');
+    if (linksSection && Array.isArray(data.selected_links) && data.selected_links.length) {
+      setText('#selected-links-heading', data.selected_links_heading);
+      const list = linksSection.querySelector('.selected-links-list');
+      data.selected_links.forEach(item => {
+        const href = safeUrl(item.url);
+        if (!href || !item.label) return;
+        const link = make('a', 'selected-link-item');
+        link.href = href;
+        link.textContent = item.label;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        if (item.description) link.append(make('span', '', item.description));
+        list.append(link);
+      });
+      linksSection.hidden = list.children.length === 0;
+    }
+
+    setText('#mostra-eyebrow', data.mostra_eyebrow);
+    setText('#mostra-heading', data.mostra_heading);
+    setText('#mostra-description', data.mostra_description);
+    const mostraUrl = safeUrl(data.mostra_url);
+    if (mostraUrl) {
+      document.getElementById('mostra-button').href = mostraUrl;
+      document.getElementById('mostra-art-link').href = mostraUrl;
+    }
+    setText('#mostra-button', data.mostra_button_label);
+  } catch (error) {
+    console.warn('Homepage content could not be loaded; using the built-in defaults.', error);
+  }
+})();
+</script>
 <script>
   // Discourage casual image saving. This cannot prevent screenshots or access to image URLs.
   document.addEventListener('contextmenu', event => {
