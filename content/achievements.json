@@ -8,9 +8,15 @@
       "type": "Exhibition",
       "title": "New York",
       "venue": "The Holy Art Gallery",
-      "description": "Selected work exhibited in New York.",
-      "upcoming": false,
-      "photos": []
+      "description": "Wanderlust 100x70cm and Reverie in red poppies 25x25 cm \nexhibited in NYC ",
+      "photos": [
+        "/assets/images/achievements/c9175c01-5d97-4d08-964a-de5abe289d4e.jpeg",
+        "/assets/images/achievements/52.jpeg",
+        "/assets/images/achievements/5a00ed48-d514-4839-bf29-0a521490dc8c.jpeg",
+        "/assets/images/achievements/38d5b45a-16f6-4c7a-8761-e58176c2e832.jpeg",
+        "/assets/images/achievements/20260321125216000ios.jpg"
+      ],
+      "upcoming": false
     },
     {
       "day_label": "April",
@@ -19,9 +25,13 @@
       "type": "Publication",
       "title": "Visual Art Journal",
       "venue": "Artist feature",
-      "description": "A feature highlighting my artistic practice.",
-      "upcoming": false,
-      "photos": []
+      "description": "A feature highlighting my artistic practice.\n\nRead here: https://visualartjournal.com/2026/04/17/issue-52-april-2026/\n\nIf you would like to receive a printed version of the magazine, you can order a physical copy on this page: https://visualartjournal.com/product/issue-52-april-2026/",
+      "photos": [
+        "/assets/images/achievements/visual-art-journal-cover-web.jpg",
+        "/assets/images/achievements/img2624.jpg",
+        "/assets/images/achievements/img2564.jpg"
+      ],
+      "upcoming": false
     },
     {
       "day_label": "30",
@@ -31,8 +41,10 @@
       "title": "Madrid",
       "venue": "Spain",
       "description": "Upcoming exhibition presentation in Madrid.",
-      "upcoming": true,
-      "photos": []
+      "upcoming": true
+    },
+    {
+      "upcoming": false
     }
   ],
   "closing_note": "This page will continue to grow alongside the work, with future exhibitions, publications, conversations and creative projects added over time."
